@@ -1,6 +1,21 @@
 ﻿@model IEnumerable<Exercise>
 
-<h2>All Exercises</h2>
+<h2>All Exercises By Body Part</h2>
+
+@*@using (Html.BeginForm("InsertProductToDatabase", "Exercise", "Post"))
+{
+    <div class="form-group">
+        <label for="">Select a Body Part</label>
+        <select class="form-control" name="BodyPart" value="">
+            @foreach (var bodyPart in )
+            {
+                <option value="@cat.CategoryID">@cat.CategoryID @cat.Name</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="Create Product" class="btn btn-primary" />
+}*@
 
 <table class="table">
     <tr>

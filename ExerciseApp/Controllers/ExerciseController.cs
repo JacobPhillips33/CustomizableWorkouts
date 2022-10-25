@@ -25,5 +25,12 @@ namespace ExerciseApp.Controllers
 
             return View(exercise);
         }
+
+        public IActionResult ViewBodyPartExerciseList(string bodyPart)
+        {
+            var bodyPartExerciseList = _exerciseRepository.BodyPartExerciseList(bodyPart);
+
+            return View(bodyPartExerciseList);
+        }
     }
 }
