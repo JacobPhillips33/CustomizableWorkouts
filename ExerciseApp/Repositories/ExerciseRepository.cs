@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
+using System.Globalization;
 
 namespace ExerciseApp.Repositories
 {
@@ -23,7 +24,7 @@ namespace ExerciseApp.Repositories
             return response;
         }
 
-        public IEnumerable<Exercise> AllExercisesList(string sortBy = "")
+        public IEnumerable<Exercise> AllExercisesList()
         {
             var response = AllExercisesResponse();
 
@@ -53,19 +54,8 @@ namespace ExerciseApp.Repositories
 
                 allExercises.Add(exercise);
             }
-            switch (sortBy)
-            {
-                case "Name":
-                    return allExercises.OrderBy(x => x.Name).ToList();
-                case "Body Part":
-                    return allExercises.OrderBy(x => x.BodyPart).ToList();
-                case "Target Muscle":
-                    return allExercises.OrderBy(x => x.TargetMuscle).ToList();
-                case "Equipment Needed":
-                    return allExercises.OrderBy(x => x.Equipment).ToList();
-                default:
-                    return allExercises.OrderBy(x => x.ExerciseNumber).ToList();
-            }
+            
+            return allExercises;
         }
 
         public Exercise SpecificExercise(int exerciseNumber)
