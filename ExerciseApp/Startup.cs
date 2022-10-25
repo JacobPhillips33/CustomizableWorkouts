@@ -18,7 +18,7 @@ namespace ExerciseApp
         {
             services.AddScoped<IDbConnection>((s) =>
             {
-                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("bestbuy"));
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("exerciseapp"));
                 conn.Open();
                 return conn;
             });

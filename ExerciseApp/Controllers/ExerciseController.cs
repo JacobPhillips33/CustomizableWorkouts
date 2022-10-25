@@ -21,7 +21,7 @@ namespace ExerciseApp.Controllers
         }        
         public IActionResult ViewByIDDesc()
         {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.ExerciseNumber).ToList();
+            var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.ExerciseID).ToList();
             return View(sortedList);
         }
         public IActionResult ViewByNameDesc()

@@ -14,7 +14,7 @@
     @foreach (var exercise in @Model)
     {
         <tr>
-            <td><a href=/Exercise/ViewExercise/@exercise.ExerciseNumber>@exercise.ExerciseNumber</a></td>
+            <td><a href=/Exercise/ViewExercise/@exercise.ExerciseID>@exercise.ExerciseID</a></td>
             <td>@exercise.Name.ToUpper()</td>
             <td><a href=/Exercise/ViewBodyPartSelection/@exercise.BodyPart>@exercise.BodyPart.ToUpper()</a></td>
             <td>@exercise.TargetMuscle.ToUpper()</td>
