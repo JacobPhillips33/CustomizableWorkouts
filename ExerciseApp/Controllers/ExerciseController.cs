@@ -65,9 +65,9 @@ namespace ExerciseApp.Controllers
 
             return View(exercise);
         }
-        public IActionResult ViewBodyPartSelection(string bodyPart)
+        public IActionResult ViewBodyPartExerciseList(string bodyPart)
         {
-            var bodyPartList = _exerciseRepository.AllExercisesList().Where(x => x.BodyPart.ToLower() == bodyPart.ToLower()).ToList();
+            var bodyPartList = _exerciseRepository.ExercisesByBodyPart(bodyPart);
             return View(bodyPartList);
         }
     }

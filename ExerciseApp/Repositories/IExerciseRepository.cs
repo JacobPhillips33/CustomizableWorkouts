@@ -6,5 +6,6 @@ namespace ExerciseApp.Repositories
     {
         public IEnumerable<Exercise> AllExercisesList();
         public Exercise SpecificExercise(int id);
+        public IEnumerable<Exercise> ExercisesByBodyPart(string bodyPart);
     }
 }

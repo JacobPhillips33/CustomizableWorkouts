@@ -27,5 +27,11 @@ namespace ExerciseApp.Repositories
             return _conn.QuerySingle<Exercise>("SELECT * FROM allexercises WHERE ExerciseID = @id;", 
                 new {id = id});
         }
+
+        public IEnumerable<Exercise> ExercisesByBodyPart(string bodyPart)
+        {
+            return _conn.Query<Exercise>("SELECT * FROM allexercises WHERE BodyPart = @bodyPart;", 
+                new {bodyPart = bodyPart});
+        }
     }
 }
