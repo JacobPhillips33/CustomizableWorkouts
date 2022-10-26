@@ -1,0 +1,16 @@
+﻿@model Exercise
+
+@using (Html.BeginForm("ViewBodyPartExerciseList", "Exercise", "Post"))
+{
+    <div class="form-group">
+        <label for="">Select a Body Part</label>
+        <select class="form-control" name="BodyPart" value="">
+            @foreach (var bodyPart in Model.BodyPartList)
+            {
+                <option value="@bodyPart.BodyPartID">@bodyPart.BodyPartID @bodyPart.BodyPartName</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="ViewBodyPartList" class="btn btn-primary" />
+}

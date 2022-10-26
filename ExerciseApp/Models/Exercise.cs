@@ -9,6 +9,6 @@
         public string? Name { get; set; }
         public string? TargetMuscle { get; set; }
         public int ApiID { get; set; }
-        public IEnumerable<BodyPart>? BodyPartList { get; set; }
+        public IEnumerable<BodyParts>? BodyPartList { get; set; }
     }
 }

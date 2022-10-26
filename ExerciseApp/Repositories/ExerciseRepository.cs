@@ -28,10 +28,24 @@ namespace ExerciseApp.Repositories
                 new {id = id});
         }
 
-        public IEnumerable<Exercise> ExercisesByBodyPart(string bodyPart)
+        public IEnumerable<Exercise> ExercisesByBodyPart(Exercise exercise)
         {
             return _conn.Query<Exercise>("SELECT * FROM allexercises WHERE BodyPart = @bodyPart;", 
-                new {bodyPart = bodyPart});
+                new {bodyPart = exercise.BodyPart});
+        }
+
+        public IEnumerable<BodyParts> GetBodyPartsList()
+        {
+            return _conn.Query<BodyParts>("SELECT * FROM bodyparts;");
+        }
+        public Exercise AssignProperties()
+        {
+            var bodyPartsList = GetBodyPartsList();
+            var exercise = new Exercise()
+            {
+                BodyPartList = bodyPartsList,
+            };
+            return exercise;
         }
     }
 }

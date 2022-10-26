@@ -18,7 +18,8 @@ namespace ExerciseApp.Controllers
             var exerciseList = _exerciseRepository.AllExercisesList();
 
             return View(exerciseList);
-        }        
+        }
+        #region Views OrderedBy Ascending and Descending by Column
         public IActionResult ViewByIDDesc()
         {
             var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.ExerciseID).ToList();
@@ -59,16 +60,25 @@ namespace ExerciseApp.Controllers
             var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.Equipment).ToList();
             return View(sortedList);
         }
+        #endregion Views OrderedBy Ascending and Descending by Column
         public IActionResult ViewExercise(int id)
         {
             var exercise = _exerciseRepository.SpecificExercise(id);
 
             return View(exercise);
         }
-        public IActionResult ViewBodyPartExerciseList(string bodyPart)
+        public IActionResult ViewSelectByProperty()
         {
-            var bodyPartList = _exerciseRepository.ExercisesByBodyPart(bodyPart);
-            return View(bodyPartList);
+            var exercise = _exerciseRepository.AssignProperties();
+
+            return View(exercise);
+        }
+
+        public IActionResult ViewBodyPartExerciseList(Exercise exercise)
+        {
+            var exerciseList = _exerciseRepository.ExercisesByBodyPart(exercise);
+
+            return View(exerciseList);
         }
     }
 }
