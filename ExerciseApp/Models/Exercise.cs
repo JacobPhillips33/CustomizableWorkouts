@@ -10,5 +10,7 @@
         public string? TargetMuscle { get; set; }
         public int ApiID { get; set; }
         public IEnumerable<BodyParts>? BodyPartList { get; set; }
+        public IEnumerable<TargetMuscles>? TargetMuscleList { get; set; }
+        public IEnumerable<EquipmentNeeded>? EquipmentList { get; set; }
     }
 }

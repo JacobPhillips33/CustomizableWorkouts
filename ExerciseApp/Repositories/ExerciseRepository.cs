@@ -33,17 +33,34 @@ namespace ExerciseApp.Repositories
             return _conn.Query<Exercise>("SELECT * FROM allexercises WHERE BodyPart = @bodyPart;", 
                 new {bodyPart = exercise.BodyPart});
         }
+        public IEnumerable<Exercise> ExercisesByTargetMuscle(Exercise exercise)
+        {
+            return _conn.Query<Exercise>("SELECT * FROM allexercises WHERE TargetMuscle = @targetMuscle;", 
+                new {targetMuscle = exercise.TargetMuscle});
+        }
 
         public IEnumerable<BodyParts> GetBodyPartsList()
         {
             return _conn.Query<BodyParts>("SELECT * FROM bodyparts;");
         }
+        public IEnumerable<TargetMuscles> GetTargetMusclesList()
+        {
+            return _conn.Query<TargetMuscles>("SELECT * FROM targetmuscles;");
+        }
+        public IEnumerable<EquipmentNeeded> GetEquipmentNeededList()
+        {
+            return _conn.Query<EquipmentNeeded>("SELECT * FROM equipmentneeded;");
+        }
         public Exercise AssignProperties()
         {
             var bodyPartsList = GetBodyPartsList();
+            var targetMusclesList = GetTargetMusclesList();
+            var equipmentNeededList = GetEquipmentNeededList();
             var exercise = new Exercise()
             {
                 BodyPartList = bodyPartsList,
+                TargetMuscleList = targetMusclesList,
+                EquipmentList = equipmentNeededList,
             };
             return exercise;
         }

@@ -79,6 +79,13 @@ namespace ExerciseApp.Controllers
             var exerciseList = _exerciseRepository.ExercisesByBodyPart(exercise);
 
             return View(exerciseList);
+            
+        }
+        public IActionResult ViewTargetMuscleExerciseList(Exercise exercise)
+        {
+            var exerciseList = _exerciseRepository.ExercisesByTargetMuscle(exercise);
+
+            return View(exerciseList);
         }
     }
 }
