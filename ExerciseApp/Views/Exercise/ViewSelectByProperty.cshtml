@@ -7,7 +7,7 @@
         <select class="form-control" name="BodyPart" value="">
             @foreach (var bodyPart in Model.BodyPartList)
             {
-                <option value="@bodyPart.BodyPartID">@bodyPart.BodyPartID @bodyPart.BodyPartName</option>
+                <option value="@bodyPart.BodyPartName">@bodyPart.BodyPartID @bodyPart.BodyPartName</option>
             }
         </select>
     </div>
