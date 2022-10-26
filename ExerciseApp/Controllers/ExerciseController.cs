@@ -87,5 +87,11 @@ namespace ExerciseApp.Controllers
 
             return View(exerciseList);
         }
+        public IActionResult ViewEquipmentExerciseList(Exercise exercise)
+        {
+            var exerciseList = _exerciseRepository.ExercisesByEquipmentNeeded(exercise);
+
+            return View(exerciseList);
+        }
     }
 }

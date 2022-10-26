@@ -38,6 +38,11 @@ namespace ExerciseApp.Repositories
             return _conn.Query<Exercise>("SELECT * FROM allexercises WHERE TargetMuscle = @targetMuscle;", 
                 new {targetMuscle = exercise.TargetMuscle});
         }
+        public IEnumerable<Exercise> ExercisesByEquipmentNeeded(Exercise exercise)
+        {
+            return _conn.Query<Exercise>("SELECT * FROM allexercises WHERE Equipment = @equipment;", 
+                new { equipment = exercise.Equipment});
+        }
 
         public IEnumerable<BodyParts> GetBodyPartsList()
         {

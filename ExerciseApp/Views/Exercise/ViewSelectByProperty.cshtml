@@ -12,7 +12,7 @@
         </select>
     </div>
 
-    <input type="submit" value="View Body Part Exercises" class="btn btn-primary" />
+    <input type="submit" value="View Exercises By Body Part" class="btn btn-primary" />
 }
 
 @using (Html.BeginForm("ViewTargetMuscleExerciseList", "Exercise", "Post"))
@@ -27,5 +27,20 @@
         </select>
     </div>
 
-    <input type="submit" value="View Target Muscle Exercises" class="btn btn-primary" />
+    <input type="submit" value="View Exercises By Target Muscle" class="btn btn-primary" />
+}
+
+@using (Html.BeginForm("ViewEquipmentExerciseList", "Exercise", "Post"))
+{
+    <div class="form-group">
+        <label for="">Select Equipment</label>
+        <select class="form-control" name="Equipment" value="">
+            @foreach (var equipment in Model.EquipmentList)
+            {
+                <option value="@equipment.EquipmentName">@equipment.EquipmentID @equipment.EquipmentName</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="View Exercises By Equipment Needed" class="btn btn-primary" />
 }
