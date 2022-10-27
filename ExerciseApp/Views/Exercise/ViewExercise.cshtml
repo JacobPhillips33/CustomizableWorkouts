@@ -1,16 +1,20 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model Exercise
+
+@using (Html.BeginForm("AddExerciseToFavoritesList", "Exercise", "Post"))
+{
+    <input asp-for="ExerciseID" type="hidden" value="@Model.ExerciseID" />
+    <input asp-for="ApiID" type="hidden" value="@Model.ApiID" />
+    <input asp-for="Name" type="hidden" value="@Model.Name" />
+    <input asp-for="BodyPart" type="hidden" value="@Model.BodyPart" />
+    <input asp-for="TargetMuscle" type="hidden" value="@Model.TargetMuscle" />
+    <input asp-for="Equipment" type="hidden" value="@Model.Equipment" />
+    <input asp-for="GifUrl" type="hidden" value="@Model.GifUrl" />
+
+    <input type="submit" value="Add to Favorites" class="btn btn-primary" />
 }
 
-
-
-
-@model Exercise
-
 <h2>@Model.Name.ToUpper()</h2>
-<h3>Body Part: @Model.BodyPart</h3>
-<h3>Target Muscle: @Model.TargetMuscle</h3>
-<h3>Equipment Needed: @Model.Equipment</h3>
+<h3>Body Part: @Model.BodyPart.ToUpper()</h3>
+<h3>Target Muscle: @Model.TargetMuscle.ToUpper()</h3>
+<h3>Equipment Needed: @Model.Equipment.ToUpper()</h3>
 <img src="@Model.GifUrl" />

@@ -93,5 +93,18 @@ namespace ExerciseApp.Controllers
 
             return View(exerciseList);
         }
+        public IActionResult ViewFavoriteExercisesList()
+        {
+            var favoriteExercisesList = _exerciseRepository.AllFavoriteExercisesList();
+
+            return View(favoriteExercisesList);
+        }
+        public IActionResult AddExerciseToFavoritesList(Exercise exerciseToAdd)
+        {
+            _exerciseRepository.AddExerciseToFavorites(exerciseToAdd);
+
+            return RedirectToAction("ViewFavoriteExercisesList");
+        }
+        
     }
 }

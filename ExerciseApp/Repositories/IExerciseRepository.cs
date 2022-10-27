@@ -13,5 +13,7 @@ namespace ExerciseApp.Repositories
         public IEnumerable<TargetMuscles> GetTargetMusclesList();
         public IEnumerable<EquipmentNeeded> GetEquipmentNeededList();
         public Exercise AssignProperties();
+        public IEnumerable<Exercise> AllFavoriteExercisesList();
+        public void AddExerciseToFavorites(Exercise exerciseToAdd);
     }
 }

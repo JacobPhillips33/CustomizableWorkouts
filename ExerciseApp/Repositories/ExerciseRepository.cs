@@ -69,5 +69,24 @@ namespace ExerciseApp.Repositories
             };
             return exercise;
         }
+        public IEnumerable<Exercise> AllFavoriteExercisesList()
+        {
+            return _conn.Query<Exercise>("SELECT * FROM favoriteexercises;");
+        }
+        public void AddExerciseToFavorites(Exercise exerciseToAdd)
+        {
+            _conn.Execute("INSERT INTO favoriteexercises (ExerciseID, ApiID, Name, BodyPart, TargetMuscle, Equipment, GifURL) " +
+                "VALUES (@ExerciseID, @ApiID, @Name, @BodyPart, @TargetMuscle, @Equipment, @GifURL);",
+                new
+                {
+                    ExerciseID = exerciseToAdd.ExerciseID,
+                    ApiID = exerciseToAdd.ApiID,
+                    Name = exerciseToAdd.Name,
+                    BodyPart = exerciseToAdd.BodyPart,
+                    TargetMuscle = exerciseToAdd.TargetMuscle,
+                    Equipment = exerciseToAdd.Equipment,
+                    GifURL = exerciseToAdd.GifUrl,
+                });
+        }
     }
 }
