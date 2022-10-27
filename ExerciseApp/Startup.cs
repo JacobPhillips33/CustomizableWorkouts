@@ -16,6 +16,13 @@ namespace ExerciseApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<MySqlConnection>((s) =>
+            {
+                MySqlConnection mySqlConn = new MySqlConnection(Configuration.GetConnectionString("exerciseapp"));
+                mySqlConn.Open();
+                return mySqlConn;
+            });
+            
             services.AddScoped<IDbConnection>((s) =>
             {
                 IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("exerciseapp"));

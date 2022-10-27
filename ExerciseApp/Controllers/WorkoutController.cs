@@ -21,14 +21,14 @@ namespace ExerciseApp.Controllers
         
         public IActionResult CreateWorkout()
         {
-            var workout = _workoutRepository.InstantianteWorkout();
-            _workoutRepository.CreateWorkout();
+            var workout = _workoutRepository.InstantianteWorkout();            
             return View(workout);
         }
 
         public IActionResult InsertWorkoutToDatabase(Workout workout)
         {
             _workoutRepository.InsertWorkout(workout);
+            _workoutRepository.CreateWorkout(workout);
             return RedirectToAction("Index");
         }
     }

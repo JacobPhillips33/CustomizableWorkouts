@@ -8,6 +8,6 @@ namespace ExerciseApp.Repositories
         public IEnumerable<Workout> GetAllWorkouts();
         public void InsertWorkout(Workout workout);
         public Workout InstantianteWorkout();
-        public void CreateWorkout();
+        public void CreateWorkout(Workout workout);
     }
 }
