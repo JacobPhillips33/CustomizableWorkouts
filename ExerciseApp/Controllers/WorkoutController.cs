@@ -31,5 +31,11 @@ namespace ExerciseApp.Controllers
             _workoutRepository.CreateWorkout(workout);
             return RedirectToAction("Index");
         }
+
+        public IActionResult ViewWorkout(int id)
+        {
+            var workout = _workoutRepository.GetWorkout(id);
+            return View(workout);
+        }
     }
 }

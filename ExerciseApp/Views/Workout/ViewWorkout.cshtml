@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Exercise>
+﻿@model Workout
 
-<h2>Workout</h2>
+<h2>Workout @Model.WorkoutName</h2>
 
 <table class="table">
     <tr>
@@ -10,7 +10,7 @@
         <th>Sets</th>
     </tr>
 
-    @foreach (var exercise in @Model)
+    @foreach (var exercise in @Model.WorkoutExercises)
     {
         <tr>
             <td><a href=/Exercise/ViewExercise/@exercise.ExerciseID>@exercise.ExerciseID</a></td>

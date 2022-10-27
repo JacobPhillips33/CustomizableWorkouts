@@ -41,5 +41,10 @@ namespace ExerciseApp.Repositories
 
             createWorkoutTable.ExecuteNonQuery();
         }
+
+        public Workout GetWorkout(int id)
+        {
+            return _conn.QuerySingle<Workout>("SELECT * FROM workouts WHERE WorkoutID = @id;", new {id = id});
+        }
     }
 }
