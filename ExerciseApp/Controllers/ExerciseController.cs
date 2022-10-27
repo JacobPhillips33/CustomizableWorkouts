@@ -16,7 +16,6 @@ namespace ExerciseApp.Controllers
         public IActionResult Index()
         {
             var exerciseList = _exerciseRepository.AllExercisesList();
-
             return View(exerciseList);
         }
         #region Views OrderedBy Ascending and Descending by Column
@@ -64,47 +63,43 @@ namespace ExerciseApp.Controllers
         public IActionResult ViewExercise(int id)
         {
             var exercise = _exerciseRepository.SpecificExercise(id);
-
             return View(exercise);
         }
         public IActionResult ViewSelectByProperty()
         {
             var exercise = _exerciseRepository.AssignProperties();
-
             return View(exercise);
         }
 
         public IActionResult ViewBodyPartExerciseList(Exercise exercise)
         {
             var exerciseList = _exerciseRepository.ExercisesByBodyPart(exercise);
-
-            return View(exerciseList);
-            
+            return View(exerciseList);            
         }
         public IActionResult ViewTargetMuscleExerciseList(Exercise exercise)
         {
             var exerciseList = _exerciseRepository.ExercisesByTargetMuscle(exercise);
-
             return View(exerciseList);
         }
         public IActionResult ViewEquipmentExerciseList(Exercise exercise)
         {
             var exerciseList = _exerciseRepository.ExercisesByEquipmentNeeded(exercise);
-
             return View(exerciseList);
         }
         public IActionResult ViewFavoriteExercisesList()
         {
             var favoriteExercisesList = _exerciseRepository.AllFavoriteExercisesList();
-
             return View(favoriteExercisesList);
         }
         public IActionResult AddExerciseToFavoritesList(Exercise exerciseToAdd)
         {
             _exerciseRepository.AddExerciseToFavorites(exerciseToAdd);
-
             return RedirectToAction("ViewFavoriteExercisesList");
         }
-        
+        public IActionResult RemoveExerciseFromFavorites(Exercise exerciseToRemove)
+        {
+            _exerciseRepository.RemoveExerciseFromFavorites(exerciseToRemove);
+            return RedirectToAction("ViewFavoriteExercisesList");
+        }
     }
 }

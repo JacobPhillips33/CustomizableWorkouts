@@ -15,5 +15,6 @@ namespace ExerciseApp.Repositories
         public Exercise AssignProperties();
         public IEnumerable<Exercise> AllFavoriteExercisesList();
         public void AddExerciseToFavorites(Exercise exerciseToAdd);
+        public void RemoveExerciseFromFavorites(Exercise exerciseToRemove);
     }
 }

@@ -88,5 +88,9 @@ namespace ExerciseApp.Repositories
                     GifURL = exerciseToAdd.GifUrl,
                 });
         }
+        public void RemoveExerciseFromFavorites(Exercise exerciseToRemove)
+        {
+            _conn.Execute("DELETE FROM favoriteexercises WHERE ExerciseID = @id;", new { id = exerciseToRemove.ExerciseID });
+        }
     }
 }
