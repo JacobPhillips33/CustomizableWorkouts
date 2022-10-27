@@ -22,7 +22,7 @@
     <input asp-for="Equipment" type="hidden" value="@Model.Equipment" />
     <input asp-for="GifUrl" type="hidden" value="@Model.GifUrl" />
 
-    <input type="submit" value="Remove from Favorites" class="btn btn-danger" />
+    <input type="submit" onclick="return confirm('Are you sure?')" value="Remove from Favorites" class="btn btn-danger" />
 }
 
 <h2>@Model.Name.ToUpper()</h2>

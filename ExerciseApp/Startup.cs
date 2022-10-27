@@ -24,6 +24,7 @@ namespace ExerciseApp
             });
 
             services.AddTransient<IExerciseRepository, ExerciseRepository>();
+            services.AddTransient<IWorkoutRepository, WorkoutRepository>();
 
             services.AddControllersWithViews();
         }

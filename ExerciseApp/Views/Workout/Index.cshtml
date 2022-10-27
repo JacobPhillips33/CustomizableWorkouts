@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<Workout>
+
+<h2>All Workouts</h2>
+
+<div style="display: block">
+    <a href="/Workout/CreateWorkout/">Create a New Workout</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Workout ID</th>
+        <th>Workout Name</th>
+    </tr>
+
+    @foreach (var workout in @Model)
+    {
+        <tr>
+            <td>@workout.WorkoutID</td>
+            <td>@workout.WorkoutName</td>
+        </tr>
+    }
+
+</table>

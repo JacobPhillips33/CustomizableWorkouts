@@ -2,6 +2,8 @@
 {
     public class Workout
     {
-        public IEnumerable<Exercise>? Exercise { get; set; }
+        public int WorkoutID { get; set; }
+        public string? WorkoutName { get; set; }
+        public IEnumerable<Exercise>? WorkoutExercises { get; set; }
     }
 }
