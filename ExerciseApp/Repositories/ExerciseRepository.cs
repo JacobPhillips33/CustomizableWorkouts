@@ -22,10 +22,19 @@ namespace ExerciseApp.Repositories
             return _conn.Query<Exercise>("SELECT * FROM allexercises;");
         }
 
+        public IEnumerable<Workout> GetWorkoutList()
+        {
+            return _conn.Query<Workout>("SELECT * FROM workouts;");
+        }
+
         public Exercise SpecificExercise(int id)
         {
-            return _conn.QuerySingle<Exercise>("SELECT * FROM allexercises WHERE ExerciseID = @id;", 
+            var exercise = _conn.QuerySingle<Exercise>("SELECT * FROM allexercises WHERE ExerciseID = @id;", 
                 new {id = id});
+
+            exercise.WorkoutList = GetWorkoutList();
+
+            return exercise;
         }
 
         public IEnumerable<Exercise> ExercisesByBodyPart(Exercise exercise)

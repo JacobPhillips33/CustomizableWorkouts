@@ -13,6 +13,7 @@
         public IEnumerable<TargetMuscles>? TargetMuscleList { get; set; }
         public IEnumerable<EquipmentNeeded>? EquipmentList { get; set; }
         public IEnumerable<Workout>? WorkoutList { get; set; }
+        public int WorkoutID { get; set; }
         public int Reps { get; set; }
         public int Sets { get; set; }
     }

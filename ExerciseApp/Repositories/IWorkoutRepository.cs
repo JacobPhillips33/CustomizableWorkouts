@@ -10,5 +10,6 @@ namespace ExerciseApp.Repositories
         public Workout InstantianteWorkout();
         public void CreateWorkout(Workout workout);
         public Workout GetWorkout(int id);
+        public Workout AddExerciseToWorkout(Exercise exercise);
     }
 }

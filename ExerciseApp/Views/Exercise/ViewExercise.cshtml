@@ -12,6 +12,7 @@
 
     <input type="submit" value="Add to Favorites" class="btn btn-primary" />
 }
+
 @using (Html.BeginForm("RemoveExerciseFromFavorites", "Exercise", "Post"))
 {
     <input asp-for="ExerciseID" type="hidden" value="@Model.ExerciseID" />
@@ -23,6 +24,24 @@
     <input asp-for="GifUrl" type="hidden" value="@Model.GifUrl" />
 
     <input type="submit" onclick="return confirm('Are you sure?')" value="Remove from Favorites" class="btn btn-danger" />
+}
+
+@using (Html.BeginForm("AddExerciseToWorkout", "Workout", "Post"))
+{
+    <input asp-for="ExerciseID" type="hidden" value="@Model.ExerciseID" />
+    <input asp-for="Name" type="hidden" value="@Model.Name" />
+
+    <div class="form-group">
+        <label for="">Select a Workout</label>
+        <select class="form-control" name="WorkoutID" value="">
+            @foreach (var workout in Model.WorkoutList)
+            {
+                <option value="@workout.WorkoutID">@workout.WorkoutID @workout.WorkoutName</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="Add to Workout" class="btn btn-primary" />
 }
 
 <h2>@Model.Name.ToUpper()</h2>
