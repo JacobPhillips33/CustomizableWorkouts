@@ -42,7 +42,7 @@ namespace ExerciseApp.Controllers
         public IActionResult AddExerciseToWorkout(Exercise exercise)
         {
             var workout = _workoutRepository.AddExerciseToWorkout(exercise);
-            return RedirectToAction("ViewWorkout", new { id = workout.WorkoutID });
+            return RedirectToAction("ViewWorkout", new { id = exercise.WorkoutID });
         }
     }
 }
