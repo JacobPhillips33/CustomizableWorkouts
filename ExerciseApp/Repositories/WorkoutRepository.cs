@@ -65,9 +65,9 @@ namespace ExerciseApp.Repositories
             return workout;
         }
 
-        public IEnumerable<WorkoutExercise> GetWorkoutTable(int id)
+        public IEnumerable<Exercise> GetWorkoutTable(int id)
         {
-            return _conn.Query<WorkoutExercise>("SELECT * FROM workout1;");
+            return _conn.Query<Exercise>("SELECT * FROM workout1;");
         }
     }
 }

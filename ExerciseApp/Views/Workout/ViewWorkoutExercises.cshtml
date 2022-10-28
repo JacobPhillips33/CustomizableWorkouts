@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WorkoutExercise>
+﻿@model IEnumerable<Exercise>
 
 <h2>Workout</h2>
 
@@ -14,7 +14,7 @@
     {
         <tr>
             <td><a href=/Exercise/ViewExercise/@exercise.ExerciseID>@exercise.ExerciseID</a></td>
-            <td>@exercise.ExerciseName</td>
+            <td>@exercise.Name</td>
             <td>@exercise.Reps</td>
             <td>@exercise.Sets</td>
         </tr>

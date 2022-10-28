@@ -11,6 +11,6 @@ namespace ExerciseApp.Repositories
         public void CreateWorkout(Workout workout);
         public Workout GetWorkout(int id);
         public Workout AddExerciseToWorkout(Exercise exercise);
-        public IEnumerable<WorkoutExercise> GetWorkoutTable(int id);
+        public IEnumerable<Exercise> GetWorkoutTable(int id);
     }
 }
