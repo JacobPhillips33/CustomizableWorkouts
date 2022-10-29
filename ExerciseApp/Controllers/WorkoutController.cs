@@ -48,9 +48,10 @@ namespace ExerciseApp.Controllers
         [HttpGet]
         public IActionResult ViewWorkoutExercises(int id)
         {
-            var workoutTable = _workoutRepository.GetWorkoutTable(id);
+            var workout = _workoutRepository.GetWorkoutTable(id);
+            var workoutExercises = _workoutRepository.GetWorkoutExercises(workout);
 
-            return View(workoutTable);
+            return View(workoutExercises);
         }
     }
 }

@@ -70,11 +70,21 @@ namespace ExerciseApp.Repositories
             return workout.WorkoutName.ToLower().Replace(" ", "");
         }
 
-        public IEnumerable<Exercise> GetWorkoutTable(int id)
+        public Workout GetWorkoutTable(int id)
         {
+            return _conn.QuerySingle<Workout>("SELECT * FROM workouts WHERE WorkoutID = @id;",
+                new { id = id });
+
             //var tableName = GetTableName(workout);
             //return _conn.Query<Exercise>($"SELECT * FROM {tableName};");
-            return _conn.Query<Exercise>($"SELECT * FROM workout1;");
+            //return _conn.Query<Exercise>($"SELECT * FROM workout1;");
+        }
+
+        public IEnumerable<Exercise> GetWorkoutExercises(Workout workout)
+        {
+            var tableName = GetTableName(workout);
+
+            return _conn.Query<Exercise>($"SELECT * FROM {tableName};");
         }
     }
 }
