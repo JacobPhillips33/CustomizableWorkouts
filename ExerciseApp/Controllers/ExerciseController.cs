@@ -27,9 +27,10 @@ namespace ExerciseApp.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                exerciseList = exerciseList.Where(x => x.Name.Contains(searchString)
-                    || x.BodyPart.Contains(searchString) || x.TargetMuscle.Contains(searchString)
-                    || x.Equipment.Contains(searchString));
+                exerciseList = exerciseList.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) || 
+                                                  x.BodyPart.ToLower().Contains(searchString.ToLower()) || 
+                                                  x.TargetMuscle.ToLower().Contains(searchString.ToLower()) || 
+                                                  x.Equipment.ToLower().Contains(searchString.ToLower()));
             }
 
             switch (sortOrder)
