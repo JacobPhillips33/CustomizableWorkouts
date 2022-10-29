@@ -17,6 +17,11 @@
             <td>@exercise.Name.ToUpper()</td>
             <td>@exercise.Reps</td>
             <td>@exercise.Sets</td>
+            <td>
+                <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> |
+                <a href=/Exercise/UpdateWorkoutExercise/@exercise.ExerciseID>Edit</a> | @*update link path*@
+                <a href=/Exercise/RemoveWorkoutExercise/@exercise.ExerciseID>Remove</a> @*update link path*@
+            </td>
         </tr>
     }
 

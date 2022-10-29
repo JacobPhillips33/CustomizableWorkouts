@@ -15,8 +15,7 @@ namespace ExerciseApp.Controllers
 
         public IActionResult Index(string sortOrder, string searchString)
         {
-            ViewData["ExerciseIDSortParam"] = sortOrder == "ExerciseID" ? "exerciseID_desc" : "";
-            ViewData["NameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
+            ViewData["NameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["BodyPartSortParam"] = String.IsNullOrEmpty(sortOrder) ? "bodyPart_desc" : "bodyPart";
             ViewData["TargetMuscleSortParam"] = String.IsNullOrEmpty(sortOrder) ? "targetMuscle_desc" : "targetMuscle";
             ViewData["EquipmentSortParam"] = String.IsNullOrEmpty(sortOrder) ? "equipment_desc" : "equipment";
@@ -35,8 +34,6 @@ namespace ExerciseApp.Controllers
 
             switch (sortOrder)
             {
-                case "exerciseID_desc": exerciseList = exerciseList.OrderByDescending(x => x.ExerciseID); break;
-                case "name": exerciseList = exerciseList.OrderBy(x => x.Name); break;
                 case "name_desc": exerciseList = exerciseList.OrderByDescending(x => x.Name); break;
                 case "bodyPart": exerciseList = exerciseList.OrderBy(x => x.BodyPart); break;
                 case "bodyPart_desc": exerciseList = exerciseList.OrderByDescending(x => x.BodyPart); break;
@@ -44,7 +41,7 @@ namespace ExerciseApp.Controllers
                 case "targetMuscle_desc": exerciseList = exerciseList.OrderByDescending(x => x.TargetMuscle); break;
                 case "equipment": exerciseList = exerciseList.OrderBy(x => x.Equipment); break;
                 case "equipment_desc": exerciseList = exerciseList.OrderByDescending(x => x.Equipment); break;
-                default: exerciseList = exerciseList.OrderBy(x => x.ExerciseID); break;
+                default: exerciseList = exerciseList.OrderBy(x => x.Name); break;
             }
 
             return View(exerciseList);
@@ -72,6 +69,12 @@ namespace ExerciseApp.Controllers
         {
             _exerciseRepository.RemoveExerciseFromFavorites(exerciseToRemove);
             return RedirectToAction("ViewFavoriteExercisesList");
+        }
+
+        public IActionResult ViewExerciseToRemove(int id)
+        {
+            var exercise = _exerciseRepository.SpecificExercise(id);
+            return View(exercise);
         }
     }
 }

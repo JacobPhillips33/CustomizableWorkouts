@@ -1,5 +1,25 @@
 ﻿@model Exercise
 
+
+
+@using (Html.BeginForm("AddExerciseToWorkout", "Workout", "Post"))
+{    
+    <input asp-for="ExerciseID" type="hidden" value="@Model.ExerciseID" />
+    <input asp-for="Name" type="hidden" value="@Model.Name" />
+
+    <div class="form-group">
+        <label for=""><h3>Select a Workout</h3></label>
+        <select class="form-control" name="WorkoutID" value="">
+            @foreach (var workout in Model.WorkoutList)
+            {
+                <option value="@workout.WorkoutID">@workout.WorkoutID @workout.WorkoutName</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="Add to Workout" class="btn btn-primary" />
+}
+<p></p>
 @using (Html.BeginForm("AddExerciseToFavoritesList", "Exercise", "Post"))
 {
     <input asp-for="ExerciseID" type="hidden" value="@Model.ExerciseID" />
@@ -13,39 +33,10 @@
     <input type="submit" value="Add to Favorites" class="btn btn-primary" />
 }
 
-@using (Html.BeginForm("RemoveExerciseFromFavorites", "Exercise", "Post"))
-{
-    <input asp-for="ExerciseID" type="hidden" value="@Model.ExerciseID" />
-    <input asp-for="ApiID" type="hidden" value="@Model.ApiID" />
-    <input asp-for="Name" type="hidden" value="@Model.Name" />
-    <input asp-for="BodyPart" type="hidden" value="@Model.BodyPart" />
-    <input asp-for="TargetMuscle" type="hidden" value="@Model.TargetMuscle" />
-    <input asp-for="Equipment" type="hidden" value="@Model.Equipment" />
-    <input asp-for="GifUrl" type="hidden" value="@Model.GifUrl" />
-
-    <input type="submit" onclick="return confirm('Are you sure?')" value="Remove from Favorites" class="btn btn-danger" />
-}
-
-@using (Html.BeginForm("AddExerciseToWorkout", "Workout", "Post"))
-{
-    <input asp-for="ExerciseID" type="hidden" value="@Model.ExerciseID" />
-    <input asp-for="Name" type="hidden" value="@Model.Name" />
-
-    <div class="form-group">
-        <label for="">Select a Workout</label>
-        <select class="form-control" name="WorkoutID" value="">
-            @foreach (var workout in Model.WorkoutList)
-            {
-                <option value="@workout.WorkoutID">@workout.WorkoutID @workout.WorkoutName</option>
-            }
-        </select>
-    </div>
-
-    <input type="submit" value="Add to Workout" class="btn btn-primary" />
-}
-
-<h2>#@Model.ExerciseID: @Model.Name.ToUpper()</h2>
-<h3>Body Part: @Model.BodyPart.ToUpper()</h3>
-<h3>Target Muscle: @Model.TargetMuscle.ToUpper()</h3>
-<h3>Equipment Needed: @Model.Equipment.ToUpper()</h3>
-<img src="@Model.GifUrl" />
+<div align="center">
+    <h2>@Model.Name.ToUpper()</h2>
+    <h3>Body Part: @Model.BodyPart.ToUpper()</h3>
+    <h3>Target Muscle: @Model.TargetMuscle.ToUpper()</h3>
+    <h3>Equipment Needed: @Model.Equipment.ToUpper()</h3>
+    <img src="@Model.GifUrl" />
+</div>
