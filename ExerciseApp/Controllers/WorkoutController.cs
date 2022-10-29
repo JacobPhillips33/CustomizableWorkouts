@@ -35,15 +35,16 @@ namespace ExerciseApp.Controllers
         public IActionResult ViewWorkout(int id)
         {
             var workout = _workoutRepository.GetWorkout(id);
+            workout = _workoutRepository.AssignExercisesToWorkout(workout);
             
             return View(workout);
         }
 
-        public IActionResult AddExerciseToWorkout(Exercise exercise)
-        {
-            var workout = _workoutRepository.AddExerciseToWorkout(exercise);
-            return RedirectToAction("ViewWorkoutExercises", new { id = exercise.WorkoutID });
-        }
+        //public IActionResult AddExerciseToWorkout(Exercise exercise)
+        //{
+        //    var workout = _workoutRepository.AddExerciseToWorkout(exercise);
+        //    return RedirectToAction("ViewWorkoutExercises", new { id = exercise.WorkoutID });
+        //}
 
         [HttpGet]
         public IActionResult ViewWorkoutExercises(int id)

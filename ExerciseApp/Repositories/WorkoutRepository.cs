@@ -48,22 +48,22 @@ namespace ExerciseApp.Repositories
                 new { id = id });
         }
                 
-        public Workout AddExerciseToWorkout(Exercise exercise)
-        {
-            var workout = GetWorkout(exercise.WorkoutID);
-            workout.WorkoutExercises.Add(exercise);
+        //public Workout AddExerciseToWorkout(Exercise exercise)
+        //{
+        //    var workout = GetWorkout(exercise.WorkoutID);
+        //    workout.WorkoutExercises.Add(exercise);
             
-            var tableName = workout.WorkoutName.Replace(" ","");
+        //    var tableName = workout.WorkoutName.Replace(" ","");
 
-            _conn.Execute($"INSERT INTO {tableName} (ExerciseID, Name) " +
-                "VALUES (@id, @name);",
-                new
-                {
-                    id = exercise.ExerciseID,
-                    name = exercise.Name,
-                });
-            return workout;
-        }
+        //    _conn.Execute($"INSERT INTO {tableName} (ExerciseID, Name) " +
+        //        "VALUES (@id, @name);",
+        //        new
+        //        {
+        //            id = exercise.ExerciseID,
+        //            name = exercise.Name,
+        //        });
+        //    return workout;
+        //}
 
         public string GetTableName(Workout workout)
         {
@@ -85,6 +85,14 @@ namespace ExerciseApp.Repositories
             var tableName = GetTableName(workout);
 
             return _conn.Query<Exercise>($"SELECT * FROM {tableName};");
+        }
+
+        public Workout AssignExercisesToWorkout(Workout workout)
+        {
+            var workoutExercises = GetWorkoutExercises(workout);
+            workout.WorkoutExercises = workoutExercises;
+
+            return workout;
         }
     }
 }

@@ -4,6 +4,6 @@
     {
         public int WorkoutID { get; set; }
         public string? WorkoutName { get; set; }
-        public List<Exercise> WorkoutExercises { get; set; } = new List<Exercise>();
+        public IEnumerable<Exercise> WorkoutExercises { get; set; } = Enumerable.Empty<Exercise>();
     }
 }
