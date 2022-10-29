@@ -55,7 +55,7 @@ namespace ExerciseApp.Repositories
             
             var tableName = workout.WorkoutName.Replace(" ","");
 
-            _conn.Execute($"INSERT INTO {tableName} (ExerciseID, ExerciseName) " +
+            _conn.Execute($"INSERT INTO {tableName} (ExerciseID, Name) " +
                 "VALUES (@id, @name);",
                 new
                 {
@@ -65,9 +65,16 @@ namespace ExerciseApp.Repositories
             return workout;
         }
 
+        public string GetTableName(Workout workout)
+        {
+            return workout.WorkoutName.ToLower().Replace(" ", "");
+        }
+
         public IEnumerable<Exercise> GetWorkoutTable(int id)
         {
-            return _conn.Query<Exercise>("SELECT * FROM workout1;");
+            //var tableName = GetTableName(workout);
+            //return _conn.Query<Exercise>($"SELECT * FROM {tableName};");
+            return _conn.Query<Exercise>($"SELECT * FROM workout1;");
         }
     }
 }

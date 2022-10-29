@@ -13,11 +13,47 @@ namespace ExerciseApp.Controllers
             _exerciseRepository = exerciseRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string sortOrder, string searchString)
         {
+            ViewData["ExerciseIDSortParam"] = sortOrder == "ExerciseID" ? "exerciseID_desc" : "";
+            ViewData["NameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "name";
+            ViewData["BodyPartSortParam"] = String.IsNullOrEmpty(sortOrder) ? "bodyPart_desc" : "bodyPart";
+            ViewData["TargetMuscleSortParam"] = String.IsNullOrEmpty(sortOrder) ? "targetMuscle_desc" : "targetMuscle";
+            ViewData["EquipmentSortParam"] = String.IsNullOrEmpty(sortOrder) ? "equipment_desc" : "equipment";
+
+            ViewData["CurrentFilter"] = searchString;
+
             var exerciseList = _exerciseRepository.AllExercisesList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                exerciseList = exerciseList.Where(x => x.Name.Contains(searchString)
+                    || x.BodyPart.Contains(searchString) || x.TargetMuscle.Contains(searchString)
+                    || x.Equipment.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "exerciseID_desc": exerciseList = exerciseList.OrderByDescending(x => x.ExerciseID); break;
+                case "name": exerciseList = exerciseList.OrderBy(x => x.Name); break;
+                case "name_desc": exerciseList = exerciseList.OrderByDescending(x => x.Name); break;
+                case "bodyPart": exerciseList = exerciseList.OrderBy(x => x.BodyPart); break;
+                case "bodyPart_desc": exerciseList = exerciseList.OrderByDescending(x => x.BodyPart); break;
+                case "targetMuscle": exerciseList = exerciseList.OrderBy(x => x.TargetMuscle); break;
+                case "targetMuscle_desc": exerciseList = exerciseList.OrderByDescending(x => x.TargetMuscle); break;
+                case "equipment": exerciseList = exerciseList.OrderBy(x => x.Equipment); break;
+                case "equipment_desc": exerciseList = exerciseList.OrderByDescending(x => x.Equipment); break;
+                default: exerciseList = exerciseList.OrderBy(x => x.ExerciseID); break;
+            }
+
             return View(exerciseList);
         }
+
+        //public IActionResult Index()
+        //{
+        //    var exerciseList = _exerciseRepository.AllExercisesList();
+        //    return View(exerciseList);
+        //}
         #region Views OrderedBy Ascending and Descending by Column
         public IActionResult ViewByIDDesc()
         {

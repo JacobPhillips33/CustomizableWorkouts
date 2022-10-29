@@ -2,13 +2,39 @@
 
 <h2>All Exercises</h2>
 
+<form asp-action="Index" method="get" align="right">
+    <div class="form-actions no-color">
+        <p>
+            Search Exercise: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn-primary"/>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <tr>
-        <th><a href=/Exercise/ViewByIDDesc>ID</a></th>
-        <th><a href=/Exercise/ViewByNameDesc>Name</a></th>
-        <th><a href=/Exercise/ViewByBodyPartAsc>Body Part</a></th>
-        <th><a href=/Exercise/ViewByTargetMuscleAsc>Target Muscle</a></th>
-        <th><a href=/Exercise/ViewByEquipmentAsc>Equipment</a></th>
+        <th><a asp-action="Index" asp-route-sortOrder="@ViewData["ExerciseIDSortParam"]">
+            @Html.DisplayNameFor(model=>model.ExerciseID)</a></th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParam"]">
+                @Html.DisplayNameFor(model=>model.Name)
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["BodyPartSortParam"]">
+                @Html.DisplayNameFor(model=>model.BodyPart)
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["TargetMuscleSortParam"]">
+                @Html.DisplayNameFor(model=>model.TargetMuscle)
+            </a>
+        </th>
+        <th>
+            <a asp-action="Index" asp-route-sortOrder="@ViewData["EquipmentSortParam"]">
+                @Html.DisplayNameFor(model=>model.Equipment)
+            </a>
+        </th>
     </tr>
 
     @foreach (var exercise in @Model)

@@ -15,7 +15,10 @@
     @foreach (var workout in @Model)
     {
         <tr>
-            <td><a href=/Workout/ViewWorkoutExercises/@workout.WorkoutID>@workout.WorkoutID</a></td>
+            <td>
+                <a asp-controller="Workout" asp-action="ViewWorkoutExercises" asp-route-id="@workout.WorkoutID"
+                )>@workout.WorkoutID</a>
+            </td>
             <td>@workout.WorkoutName</td>
         </tr>
     }

@@ -20,6 +20,20 @@
             <td>@exercise.BodyPart.ToUpper()</td>
             <td>@exercise.TargetMuscle.ToUpper()</td>
             <td>@exercise.Equipment.ToUpper()</td>
+            <td>
+                @using (Html.BeginForm("RemoveExerciseFromFavorites", "Exercise", "Delete"))
+                {
+                    <input asp-for="@exercise.ExerciseID" type="hidden" value="@Model.Where(x => x.ExerciseID == exercise.ExerciseID)" />
+                    <input asp-for="@exercise.ApiID" type="hidden" value="@Model.Where(x => x.ApiID == exercise.ApiID)" />
+                    <input asp-for="@exercise.Name" type="hidden" value="@Model.Where(x => x.Name == exercise.Name)" />
+                    <input asp-for="@exercise.BodyPart" type="hidden" value="@Model.Where(x => x.BodyPart == exercise.BodyPart)" />
+                    <input asp-for="@exercise.TargetMuscle" type="hidden" value="@Model.Where(x => x.TargetMuscle == exercise.TargetMuscle)" />
+                    <input asp-for="@exercise.Equipment" type="hidden" value="@Model.Where(x => x.Equipment == exercise.Equipment)" />
+                    <input asp-for="@exercise.GifUrl" type="hidden" value="@Model.Where(x => x.GifUrl == exercise.GifUrl)" />
+
+                    <input type="submit" onclick="return confirm('Are you sure?')" value="Remove from Favorites" class="btn btn-danger" />
+                }
+            </td>
             <td><a href=/Exercise/ViewExercise/@exercise.ExerciseID>Remove This Exercise</a></td>
         </tr>
     }

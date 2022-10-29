@@ -45,6 +45,7 @@ namespace ExerciseApp.Controllers
             return RedirectToAction("ViewWorkoutExercises", new { id = exercise.WorkoutID });
         }
 
+        [HttpGet]
         public IActionResult ViewWorkoutExercises(int id)
         {
             var workoutTable = _workoutRepository.GetWorkoutTable(id);
