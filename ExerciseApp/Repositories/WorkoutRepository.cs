@@ -36,7 +36,7 @@ namespace ExerciseApp.Repositories
         public void CreateWorkout(Workout workout)
         {
             var name = workout.WorkoutName.Replace(" ", "");
-            MySqlCommand createWorkoutTable = new MySqlCommand($"CREATE TABLE {name} (ExerciseID int, ExerciseName varchar(100), " +
+            MySqlCommand createWorkoutTable = new MySqlCommand($"CREATE TABLE {name} (ExerciseID int, Name varchar(100), " +
                 "Reps int, Sets int);", _mySqlConn);
 
             createWorkoutTable.ExecuteNonQuery();
@@ -51,15 +51,8 @@ namespace ExerciseApp.Repositories
         public void AddExerciseToWorkout(Exercise exercise)
         {
             var workout = GetWorkout(exercise.WorkoutID);
-            //var workoutExercises = GetWorkoutExercises(workout);
-            //workout.WorkoutExercises = workoutExercises;
             var tableName = GetTableName(workout);
             
-                
-            //workout.WorkoutExercises.Add(exercise);
-
-            //var tableName = workout.WorkoutName.Replace(" ", "");
-
             _conn.Execute($"INSERT INTO {tableName} (ExerciseID, Name) " +
                 "VALUES (@id, @name);",
                 new
@@ -72,16 +65,6 @@ namespace ExerciseApp.Repositories
         public string GetTableName(Workout workout)
         {
             return workout.WorkoutName.ToLower().Replace(" ", "");
-        }
-
-        public Workout GetWorkoutTable(int id)
-        {
-            return _conn.QuerySingle<Workout>("SELECT * FROM workouts WHERE WorkoutID = @id;",
-                new { id = id });
-
-            //var tableName = GetTableName(workout);
-            //return _conn.Query<Exercise>($"SELECT * FROM {tableName};");
-            //return _conn.Query<Exercise>($"SELECT * FROM workout1;");
         }
 
         public IEnumerable<Exercise> GetWorkoutExercises(Workout workout)

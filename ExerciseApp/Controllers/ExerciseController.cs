@@ -50,89 +50,24 @@ namespace ExerciseApp.Controllers
             return View(exerciseList);
         }
 
-        //public IActionResult Index()
-        //{
-        //    var exerciseList = _exerciseRepository.AllExercisesList();
-        //    return View(exerciseList);
-        //}
-        #region Views OrderedBy Ascending and Descending by Column
-        public IActionResult ViewByIDDesc()
-        {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.ExerciseID).ToList();
-            return View(sortedList);
-        }
-        public IActionResult ViewByNameDesc()
-        {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.Name).ToList();
-            return View(sortedList);
-        }
-        public IActionResult ViewByBodyPartAsc()
-        {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderBy(x => x.BodyPart).ToList();  
-            return View(sortedList);
-        }
-        public IActionResult ViewByBodyPartDesc()
-        {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.BodyPart).ToList();
-            return View(sortedList);
-        }
-        public IActionResult ViewByTargetMuscleAsc()
-        {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderBy(x => x.TargetMuscle).ToList();
-            return View(sortedList);
-        }
-        public IActionResult ViewByTargetMuscleDesc()
-        {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.TargetMuscle).ToList();
-            return View(sortedList);
-        }
-        public IActionResult ViewByEquipmentAsc()
-        {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderBy(x => x.Equipment).ToList();
-            return View(sortedList);
-        }
-        public IActionResult ViewByEquipmentDesc()
-        {
-            var sortedList = _exerciseRepository.AllExercisesList().OrderByDescending(x => x.Equipment).ToList();
-            return View(sortedList);
-        }
-        #endregion Views OrderedBy Ascending and Descending by Column
         public IActionResult ViewExercise(int id)
         {
             var exercise = _exerciseRepository.SpecificExercise(id);
             return View(exercise);
         }
-        public IActionResult ViewSelectByProperty()
-        {
-            var exercise = _exerciseRepository.AssignProperties();
-            return View(exercise);
-        }
 
-        public IActionResult ViewBodyPartExerciseList(Exercise exercise)
-        {
-            var exerciseList = _exerciseRepository.ExercisesByBodyPart(exercise);
-            return View(exerciseList);            
-        }
-        public IActionResult ViewTargetMuscleExerciseList(Exercise exercise)
-        {
-            var exerciseList = _exerciseRepository.ExercisesByTargetMuscle(exercise);
-            return View(exerciseList);
-        }
-        public IActionResult ViewEquipmentExerciseList(Exercise exercise)
-        {
-            var exerciseList = _exerciseRepository.ExercisesByEquipmentNeeded(exercise);
-            return View(exerciseList);
-        }
         public IActionResult ViewFavoriteExercisesList()
         {
             var favoriteExercisesList = _exerciseRepository.AllFavoriteExercisesList();
             return View(favoriteExercisesList);
         }
+
         public IActionResult AddExerciseToFavoritesList(Exercise exerciseToAdd)
         {
             _exerciseRepository.AddExerciseToFavorites(exerciseToAdd);
             return RedirectToAction("ViewFavoriteExercisesList");
         }
+
         public IActionResult RemoveExerciseFromFavorites(Exercise exerciseToRemove)
         {
             _exerciseRepository.RemoveExerciseFromFavorites(exerciseToRemove);
