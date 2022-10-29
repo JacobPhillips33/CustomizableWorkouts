@@ -3,26 +3,20 @@
 <h2>All Workouts</h2>
 
 <div style="display: block">
-    <a href="/Workout/CreateWorkout/">Create a New Workout</a>
+    <a href="/Workout/CreateWorkout/">Create New Workout</a>
 </div>
 
 <table class="table">
     <tr>
-        @*<th>Workout ID</th>*@
         <th>Workout Name</th>
     </tr>
 
     @foreach (var workout in @Model)
     {
         <tr>
-            @*<td>
-                <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID"
-                >@workout.WorkoutID</a>
-            </td>*@
             <td>
                 <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">@workout.WorkoutName</a>
             </td>
-            @*<td>@workout.WorkoutName</td>*@
         </tr>
     }
 

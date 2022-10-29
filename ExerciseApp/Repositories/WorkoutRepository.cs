@@ -47,23 +47,27 @@ namespace ExerciseApp.Repositories
             return _conn.QuerySingle<Workout>("SELECT * FROM workouts WHERE WorkoutID = @id;",
                 new { id = id });
         }
-                
-        //public Workout AddExerciseToWorkout(Exercise exercise)
-        //{
-        //    var workout = GetWorkout(exercise.WorkoutID);
-        //    workout.WorkoutExercises.Add(exercise);
-            
-        //    var tableName = workout.WorkoutName.Replace(" ","");
 
-        //    _conn.Execute($"INSERT INTO {tableName} (ExerciseID, Name) " +
-        //        "VALUES (@id, @name);",
-        //        new
-        //        {
-        //            id = exercise.ExerciseID,
-        //            name = exercise.Name,
-        //        });
-        //    return workout;
-        //}
+        public void AddExerciseToWorkout(Exercise exercise)
+        {
+            var workout = GetWorkout(exercise.WorkoutID);
+            //var workoutExercises = GetWorkoutExercises(workout);
+            //workout.WorkoutExercises = workoutExercises;
+            var tableName = GetTableName(workout);
+            
+                
+            //workout.WorkoutExercises.Add(exercise);
+
+            //var tableName = workout.WorkoutName.Replace(" ", "");
+
+            _conn.Execute($"INSERT INTO {tableName} (ExerciseID, Name) " +
+                "VALUES (@id, @name);",
+                new
+                {
+                    id = exercise.ExerciseID,
+                    name = exercise.Name,
+                });
+        }
 
         public string GetTableName(Workout workout)
         {
