@@ -13,10 +13,26 @@
 
 <table class="table">
     <tr>
-        <th>Name</th>
-        <th>Body Part</th>
-        <th>Target Muscle</th>
-        <th>Equipment</th>
+        <th>
+            <a asp-action="FavoriteExercisesList" asp-route-sortOrder="@ViewData["NameSortParam"]">
+                @Html.DisplayNameFor(model=>model.Name)
+            </a>
+        </th>
+        <th>
+            <a asp-action="FavoriteExercisesList" asp-route-sortOrder="@ViewData["BodyPartSortParam"]">
+                @Html.DisplayNameFor(model=>model.BodyPart)
+            </a>
+        </th>
+        <th>
+            <a asp-action="FavoriteExercisesList" asp-route-sortOrder="@ViewData["TargetMuscleSortParam"]">
+                @Html.DisplayNameFor(model=>model.TargetMuscle)
+            </a>
+        </th>
+        <th>
+            <a asp-action="FavoriteExercisesList" asp-route-sortOrder="@ViewData["EquipmentSortParam"]">
+                @Html.DisplayNameFor(model=>model.Equipment)
+            </a>
+        </th>
         <th></th>
     </tr>
 

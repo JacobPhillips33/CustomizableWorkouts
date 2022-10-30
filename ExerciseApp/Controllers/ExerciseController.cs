@@ -56,8 +56,14 @@ namespace ExerciseApp.Controllers
             var exercise = _exerciseRepository.SpecificExercise(id);
             return View(exercise);
         }
-        public IActionResult FavoriteExercisesList(string searchString)
+        public IActionResult FavoriteExercisesList(string sortOrder, string searchString)
         {
+            ViewData["NameSortParam"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["BodyPartSortParam"] = String.IsNullOrEmpty(sortOrder) ? "bodyPart_desc" : "bodyPart";
+            ViewData["TargetMuscleSortParam"] = String.IsNullOrEmpty(sortOrder) ? "targetMuscle_desc" : "targetMuscle";
+            ViewData["EquipmentSortParam"] = String.IsNullOrEmpty(sortOrder) ? "equipment_desc" : "equipment";
+
+
             ViewData["CurrentFilter1"] = searchString;
 
             var favoriteExercisesList = _exerciseRepository.AllFavoriteExercisesList();
@@ -70,6 +76,17 @@ namespace ExerciseApp.Controllers
                                                                          x.Equipment.ToLower().Contains(searchString.ToLower()));
             }
 
+            switch (sortOrder)
+            {
+                case "name_desc": favoriteExercisesList = favoriteExercisesList.OrderByDescending(x => x.Name); break;
+                case "bodyPart": favoriteExercisesList = favoriteExercisesList.OrderBy(x => x.BodyPart); break;
+                case "bodyPart_desc": favoriteExercisesList = favoriteExercisesList.OrderByDescending(x => x.BodyPart); break;
+                case "targetMuscle": favoriteExercisesList = favoriteExercisesList.OrderBy(x => x.TargetMuscle); break;
+                case "targetMuscle_desc": favoriteExercisesList = favoriteExercisesList.OrderByDescending(x => x.TargetMuscle); break;
+                case "equipment": favoriteExercisesList = favoriteExercisesList.OrderBy(x => x.Equipment); break;
+                case "equipment_desc": favoriteExercisesList = favoriteExercisesList.OrderByDescending(x => x.Equipment); break;
+                default: favoriteExercisesList = favoriteExercisesList.OrderBy(x => x.Name); break;
+            }
 
             var favoriteExercises = new ExerciseGroup()
             {
