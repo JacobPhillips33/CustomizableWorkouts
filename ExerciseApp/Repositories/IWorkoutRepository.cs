@@ -14,5 +14,6 @@ namespace ExerciseApp.Repositories
         public string GetTableName(Workout workout);
         public IEnumerable<Exercise> GetWorkoutExercises(Workout workout);
         public Workout AssignExercisesToWorkout(Workout workout);
+        public void UpdateWorkoutExercise(Workout workout);
     }
 }

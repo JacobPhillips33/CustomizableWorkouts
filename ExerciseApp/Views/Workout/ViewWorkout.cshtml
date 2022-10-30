@@ -4,25 +4,41 @@
 
 <table class="table">
     <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Reps</th>
         <th>Sets</th>
     </tr>
 
-    @foreach (var exercise in @Model.WorkoutExercises)
+    @using (Html.BeginForm("UpdateWorkoutExerciseToDatabase", "Workout", "Post"))
     {
-        <tr>
-            <td><a href=/Exercise/ViewExercise/@exercise.ExerciseID>@exercise.ExerciseID</a></td>
-            <td>@exercise.Name.ToUpper()</td>
-            <td>@exercise.Reps</td>
-            <td>@exercise.Sets</td>
-            <td>
-                <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> |
-                <a href=/Exercise/UpdateWorkoutExercise/@exercise.ExerciseID>Edit</a> | @*update link path*@
-                <a href=/Exercise/RemoveWorkoutExercise/@exercise.ExerciseID>Remove</a> @*update link path*@
-            </td>
-        </tr>
+        @foreach (var exercise in @Model.WorkoutExercises)
+        {
+            <tr>
+                <input asp-for="@Model.WorkoutID" type="hidden" value="@Model.WorkoutID" />
+                <input asp-for="@Model.WorkoutName" type="hidden" value="@Model.WorkoutName" />
+                <input asp-for="@Model.ExerciseID" type="hidden" value="@exercise.ExerciseID" />
+                <td>
+                    <input asp-for="@exercise.Name" type="hidden" value="@exercise.Name" />
+                    @exercise.Name.ToUpper()
+                </td>
+                <td>
+                    @*<label asp-for="@exercise.Reps" class="control-label">@exercise.Reps</label>*@
+                    <input asp-for="@Model.Reps" type="number" step="1" name="Reps" class="form-control" value="@exercise.Reps" />
+                </td>
+                <td>
+                    @*<label asp-for="@exercise.Sets" class="control-label">@exercise.Sets</label>*@
+                    <input asp-for="@Model.Sets" type="number" step="1" name="Sets" class="form-control" value="@exercise.Sets" />
+                </td>
+                <td>
+                    <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> |
+                    <input type="submit" value="Update"> |
+                    @*<a href=/Exercise/UpdateWorkoutExercise/@exercise.ExerciseID>Edit</a> |*@
+                    <a href=/Exercise/RemoveWorkoutExercise/@exercise.ExerciseID>Remove</a>
+                </td>
+            </tr>
+        }
     }
+
+    
 
 </table>

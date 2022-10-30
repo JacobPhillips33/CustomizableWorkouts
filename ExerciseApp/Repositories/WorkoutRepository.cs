@@ -81,5 +81,13 @@ namespace ExerciseApp.Repositories
 
             return workout;
         }
+
+        public void UpdateWorkoutExercise(Workout workout)
+        {
+            var tableName = GetTableName(workout);
+
+            _conn.Execute($"UPDATE {tableName} SET Reps = @reps, Sets = @sets WHERE ExerciseID = @id;",
+                new { reps = workout.Reps, sets = workout.Sets, id = workout.ExerciseID });
+        }
     }
 }

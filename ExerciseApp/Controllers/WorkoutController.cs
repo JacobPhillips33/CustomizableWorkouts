@@ -45,13 +45,13 @@ namespace ExerciseApp.Controllers
             _workoutRepository.AddExerciseToWorkout(exercise);
             return RedirectToAction("ViewWorkout", new { id = exercise.WorkoutID });
         }
-                
-        //public IActionResult ViewWorkoutExercises(int id)
-        //{
-        //    var workout = _workoutRepository.GetWorkoutTable(id);
-        //    var workoutExercises = _workoutRepository.GetWorkoutExercises(workout);
 
-        //    return View(workoutExercises);
-        //}
+        public IActionResult UpdateWorkoutExerciseToDatabase(Workout workout)
+        {
+            _workoutRepository.UpdateWorkoutExercise(workout);
+            
+            return RedirectToAction("ViewWorkout", new { id = workout.WorkoutID });
+            
+        }
     }
 }
