@@ -44,7 +44,21 @@ namespace ExerciseApp.Repositories
 
         public void AddExerciseToFavorites(Exercise exerciseToAdd)
         {
-            _conn.Execute("INSERT INTO favoriteexercises (ExerciseID, ApiID, Name, BodyPart, TargetMuscle, Equipment, GifURL) " +
+            var exercisesList = AllFavoriteExercisesList();
+
+            bool onList = false;
+            foreach (var exercise in exercisesList)
+            {
+                if (exercise.ExerciseID == exerciseToAdd.ExerciseID)
+                {
+                    onList = true;
+                    break;
+                }
+            }
+
+            if (!onList)
+            {
+                _conn.Execute("INSERT INTO favoriteexercises (ExerciseID, ApiID, Name, BodyPart, TargetMuscle, Equipment, GifURL) " +
                 "VALUES (@ExerciseID, @ApiID, @Name, @BodyPart, @TargetMuscle, @Equipment, @GifURL);",
                 new
                 {
@@ -56,6 +70,7 @@ namespace ExerciseApp.Repositories
                     Equipment = exerciseToAdd.Equipment,
                     GifURL = exerciseToAdd.GifUrl,
                 });
+            }    
         }
 
         public void RemoveExerciseFromFavorites(ExerciseGroup favoriteToRemove)
