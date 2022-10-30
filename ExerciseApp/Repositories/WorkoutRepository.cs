@@ -79,6 +79,12 @@ namespace ExerciseApp.Repositories
             return new string(tableName).ToLower();
         }
 
+        public string GetTableName(WorkoutGroup workoutGroup)
+        {
+            char[] tableName = workoutGroup.WorkoutName.Where(x => char.IsLetterOrDigit(x)).ToArray();
+            return new string(tableName).ToLower();
+        }
+
         public IEnumerable<Exercise> GetWorkoutExercises(Workout workout)
         {
             var tableName = GetTableName(workout);
@@ -110,8 +116,15 @@ namespace ExerciseApp.Repositories
         }
 
         public void UpdateWorkout(WorkoutGroup workoutGroup)
-        {
-            _conn.Execute("UPDATE workouts SET WorkoutName = @name WHERE WorkoutID = @id;", 
+        {         
+            var workout = GetWorkout(workoutGroup.WorkoutID);
+
+            var oldTableName = GetTableName(workout);
+            var newTableName = GetTableName(workoutGroup);
+
+            _conn.Execute($"ALTER TABLE {oldTableName} RENAME TO {newTableName};");
+
+            _conn.Execute("UPDATE workouts SET WorkoutName = @name WHERE WorkoutID = @id;",
                 new { id = workoutGroup.WorkoutID, name = workoutGroup.WorkoutName });
         }
 

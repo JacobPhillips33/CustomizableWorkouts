@@ -13,6 +13,7 @@ namespace ExerciseApp.Repositories
         public Workout GetWorkout(int id);
         public void AddExerciseToWorkout(Exercise exercise);
         public string GetTableName(Workout workout);
+        public string GetTableName(WorkoutGroup workoutGroup);
         public IEnumerable<Exercise> GetWorkoutExercises(Workout workout);
         public Workout AssignExercisesToWorkout(Workout workout);
         public void UpdateWorkoutExercise(Workout workout);
