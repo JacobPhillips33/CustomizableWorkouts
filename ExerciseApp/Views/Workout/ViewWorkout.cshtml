@@ -9,9 +9,11 @@
         <th>Sets</th>
     </tr>
 
-    @using (Html.BeginForm("UpdateWorkoutExerciseToDatabase", "Workout", "Post"))
+    
+    
+    @foreach (var exercise in @Model.WorkoutExercises)
     {
-        @foreach (var exercise in @Model.WorkoutExercises)
+        @using (Html.BeginForm("UpdateWorkoutExerciseToDatabase", "Workout", "Post"))
         {
             <tr>
                 <input asp-for="@Model.WorkoutID" type="hidden" value="@Model.WorkoutID" />
@@ -38,6 +40,7 @@
             </tr>
         }
     }
+    
 
     
 
