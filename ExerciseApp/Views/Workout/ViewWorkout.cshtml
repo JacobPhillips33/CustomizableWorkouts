@@ -23,10 +23,10 @@
                     @exercise.Name.ToUpper()
                 </td>
                 <td>
-                    <input asp-for="@Model.Reps" type="number" step="1" name="Reps" class="form-control" value="@exercise.Reps" />
+                    <input asp-for="@Model.Reps" type="text" name="Reps" class="form-control" value="@exercise.Reps" />
                 </td>
                 <td>
-                    <input asp-for="@Model.Sets" type="number" step="1" name="Sets" class="form-control" value="@exercise.Sets" />
+                    <input asp-for="@Model.Sets" type="text" name="Sets" class="form-control" value="@exercise.Sets" />
                 </td>
                 <td>
                     <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> 

@@ -45,9 +45,10 @@ namespace ExerciseApp.Repositories
 
         public void CreateWorkout(Workout workout)
         {
-            var name = workout.WorkoutName.Replace(" ", "");
-            MySqlCommand createWorkoutTable = new MySqlCommand($"CREATE TABLE {name} (ExerciseID int, Name varchar(100), " +
-                "Reps int, Sets int);", _mySqlConn);
+            var tableName = GetTableName(workout);
+
+            MySqlCommand createWorkoutTable = new MySqlCommand($"CREATE TABLE {tableName} (ExerciseID int, " +
+                $"Name varchar(100), Reps varchar(45), Sets varchar(45));", _mySqlConn);
 
             createWorkoutTable.ExecuteNonQuery();
         }

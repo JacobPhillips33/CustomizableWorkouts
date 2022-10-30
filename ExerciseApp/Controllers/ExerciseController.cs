@@ -77,11 +77,5 @@ namespace ExerciseApp.Controllers
             _exerciseRepository.RemoveExerciseFromFavorites(favoriteToRemove);
             return RedirectToAction("FavoriteExercisesList");
         }
-
-        public IActionResult ViewExerciseToRemove(int id)
-        {
-            var exercise = _exerciseRepository.SpecificExercise(id);
-            return View(exercise);
-        }
     }
 }

@@ -12,7 +12,7 @@
         <select class="form-control" name="WorkoutID" value="">
             @foreach (var workout in Model.WorkoutList)
             {
-                <option value="@workout.WorkoutID">@workout.WorkoutID @workout.WorkoutName</option>
+                <option value="@workout.WorkoutID">@workout.WorkoutName</option>
             }
         </select>
     </div>
