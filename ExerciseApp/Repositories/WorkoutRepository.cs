@@ -75,7 +75,8 @@ namespace ExerciseApp.Repositories
 
         public string GetTableName(Workout workout)
         {
-            return workout.WorkoutName.ToLower().Replace(" ", "");
+            char[] tableName = workout.WorkoutName.Where(x => char.IsLetterOrDigit(x)).ToArray();
+            return new string(tableName).ToLower();
         }
 
         public IEnumerable<Exercise> GetWorkoutExercises(Workout workout)
