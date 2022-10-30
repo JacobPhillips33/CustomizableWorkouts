@@ -52,11 +52,14 @@ namespace ExerciseApp.Controllers
             var exercise = _exerciseRepository.SpecificExercise(id);
             return View(exercise);
         }
-
-        public IActionResult ViewFavoriteExercisesList()
+        public IActionResult FavoriteExercisesList()
         {
             var favoriteExercisesList = _exerciseRepository.AllFavoriteExercisesList();
-            return View(favoriteExercisesList);
+            var favoriteExercises = new FavoriteExercises()
+            {
+                FavoriteExercisesList = favoriteExercisesList
+            };
+            return View(favoriteExercises);
         }
 
         public IActionResult AddExerciseToFavoritesList(Exercise exerciseToAdd)
@@ -65,10 +68,10 @@ namespace ExerciseApp.Controllers
             return RedirectToAction("ViewFavoriteExercisesList");
         }
 
-        public IActionResult RemoveExerciseFromFavorites(Exercise exerciseToRemove)
+        public IActionResult RemoveExerciseFromFavorites(FavoriteExercises favoriteToRemove)
         {
-            _exerciseRepository.RemoveExerciseFromFavorites(exerciseToRemove);
-            return RedirectToAction("ViewFavoriteExercisesList");
+            _exerciseRepository.RemoveExerciseFromFavorites(favoriteToRemove);
+            return RedirectToAction("FavoriteExercisesList");
         }
 
         public IActionResult ViewExerciseToRemove(int id)

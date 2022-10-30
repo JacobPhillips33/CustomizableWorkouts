@@ -46,7 +46,7 @@ namespace ExerciseApp.Controllers
             return RedirectToAction("ViewWorkout", new { id = exercise.WorkoutID });
         }
 
-        public IActionResult ViewUpdateRemoveWorkoutExercise(string cmd, Workout workout)
+        public IActionResult UpdateRemoveWorkoutExercise(string cmd, Workout workout)
         {
             if (cmd == "Remove")
             {

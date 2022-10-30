@@ -58,9 +58,9 @@ namespace ExerciseApp.Repositories
                 });
         }
 
-        public void RemoveExerciseFromFavorites(Exercise exerciseToRemove)
+        public void RemoveExerciseFromFavorites(FavoriteExercises favoriteToRemove)
         {
-            _conn.Execute("DELETE FROM favoriteexercises WHERE ExerciseID = @id;", new { id = exerciseToRemove.ExerciseID });
+            _conn.Execute("DELETE FROM favoriteexercises WHERE ExerciseID = @id;", new { id = favoriteToRemove.ExerciseID });
         }
     }
 }

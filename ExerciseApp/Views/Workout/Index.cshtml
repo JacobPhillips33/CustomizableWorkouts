@@ -8,14 +8,20 @@
 
 <table class="table">
     <tr>
-        <th>Workout Name</th>
+        <th>Workout</th>
+        <th></th>
     </tr>
 
     @foreach (var workout in @Model)
     {
         <tr>
+            <td>@workout.WorkoutName</td>
             <td>
-                <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">@workout.WorkoutName</a>
+                <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">View</a> |
+            
+                Update |
+            
+                Delete
             </td>
         </tr>
     }
