@@ -46,12 +46,18 @@ namespace ExerciseApp.Controllers
             return RedirectToAction("ViewWorkout", new { id = exercise.WorkoutID });
         }
 
-        public IActionResult UpdateWorkoutExerciseToDatabase(Workout workout)
+        public IActionResult ViewUpdateRemoveWorkoutExercise(string cmd, Workout workout)
         {
-            _workoutRepository.UpdateWorkoutExercise(workout);
-            
-            return RedirectToAction("ViewWorkout", new { id = workout.WorkoutID });
-            
+            if (cmd == "Remove")
+            {
+                _workoutRepository.RemoveExerciseFromWorkout(workout);
+                return RedirectToAction("ViewWorkout", new { id = workout.WorkoutID });
+            }
+            else
+            {
+                _workoutRepository.UpdateWorkoutExercise(workout);
+                return RedirectToAction("ViewWorkout", new { id = workout.WorkoutID });
+            }
         }
     }
 }

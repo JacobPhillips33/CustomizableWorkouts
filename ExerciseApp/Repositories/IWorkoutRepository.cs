@@ -15,5 +15,6 @@ namespace ExerciseApp.Repositories
         public IEnumerable<Exercise> GetWorkoutExercises(Workout workout);
         public Workout AssignExercisesToWorkout(Workout workout);
         public void UpdateWorkoutExercise(Workout workout);
+        public void RemoveExerciseFromWorkout(Workout workout);
     }
 }

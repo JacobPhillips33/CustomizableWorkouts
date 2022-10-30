@@ -89,5 +89,12 @@ namespace ExerciseApp.Repositories
             _conn.Execute($"UPDATE {tableName} SET Reps = @reps, Sets = @sets WHERE ExerciseID = @id;",
                 new { reps = workout.Reps, sets = workout.Sets, id = workout.ExerciseID });
         }
+
+        public void RemoveExerciseFromWorkout(Workout workout)
+        {
+            var tableName = GetTableName(workout);
+
+            _conn.Execute($"DELETE FROM {tableName} WHERE ExerciseID = @id;", new { id = workout.ExerciseID });
+        }
     }
 }

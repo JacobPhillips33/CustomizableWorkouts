@@ -7,13 +7,12 @@
         <th>Name</th>
         <th>Reps</th>
         <th>Sets</th>
+        <th></th>
     </tr>
-
-    
     
     @foreach (var exercise in @Model.WorkoutExercises)
     {
-        @using (Html.BeginForm("UpdateWorkoutExerciseToDatabase", "Workout", "Post"))
+        @using (Html.BeginForm("ViewUpdateRemoveWorkoutExercise", "Workout", "Post"))
         {
             <tr>
                 <input asp-for="@Model.WorkoutID" type="hidden" value="@Model.WorkoutID" />
@@ -24,18 +23,15 @@
                     @exercise.Name.ToUpper()
                 </td>
                 <td>
-                    @*<label asp-for="@exercise.Reps" class="control-label">@exercise.Reps</label>*@
                     <input asp-for="@Model.Reps" type="number" step="1" name="Reps" class="form-control" value="@exercise.Reps" />
                 </td>
                 <td>
-                    @*<label asp-for="@exercise.Sets" class="control-label">@exercise.Sets</label>*@
                     <input asp-for="@Model.Sets" type="number" step="1" name="Sets" class="form-control" value="@exercise.Sets" />
                 </td>
                 <td>
-                    <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> |
-                    <input type="submit" value="Update"> |
-                    @*<a href=/Exercise/UpdateWorkoutExercise/@exercise.ExerciseID>Edit</a> |*@
-                    <a href=/Exercise/RemoveWorkoutExercise/@exercise.ExerciseID>Remove</a>
+                    <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> 
+                    <input type="submit" name="cmd" value="Update">  
+                    <input type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Remove"> 
                 </td>
             </tr>
         }
