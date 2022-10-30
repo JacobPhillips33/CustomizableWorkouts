@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Workout>
+﻿@model WorkoutGroup
 
 <h2>All Workouts</h2>
 
@@ -12,18 +12,21 @@
         <th></th>
     </tr>
 
-    @foreach (var workout in @Model)
+    @foreach (var workout in @Model.WorkoutsList)
     {
-        <tr>
-            <td>@workout.WorkoutName</td>
-            <td>
-                <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">View</a> |
-            
-                Update |
-            
-                Delete
-            </td>
-        </tr>
+        @using (Html.BeginForm("UpdateDeleteWorkout", "Workout", "Post"))
+        {
+            <tr>
+                <input asp-for="@Model.WorkoutID" type="hidden" value="@workout.WorkoutID" />
+                <td>
+                    <input asp-for="@Model.WorkoutName" type="text" name="WorkoutName" class="form-control" value="@workout.WorkoutName" />
+                </td>
+                <td>
+                    <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">View</a> |
+                    <input type="submit" name="cmd" value="Update"> |
+                    <input type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Delete">
+                </td>
+            </tr>
+        }        
     }
-
 </table>

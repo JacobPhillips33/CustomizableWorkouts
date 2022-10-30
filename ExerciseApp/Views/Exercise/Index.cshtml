@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Exercise>
+﻿@model ExerciseGroup
 
 <div align="center">
     <h2>All Exercises</h2>
@@ -38,7 +38,7 @@
         <th></th>
     </tr>
 
-    @foreach (var exercise in @Model)
+    @foreach (var exercise in @Model.ExercisesList)
     {
         <tr>
             <td>@exercise.Name.ToUpper()</td>
@@ -47,7 +47,19 @@
             <td>@exercise.Equipment.ToUpper()</td>
             <td>
                 <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> |
-                Add to Favorites
+
+                @using (Html.BeginForm("AddExerciseToFavoritesList", "Exercise", "Post"))
+                {
+                    <input asp-for="ExerciseID" type="hidden" value="@exercise.ExerciseID" />
+                    <input asp-for="ApiID" type="hidden" value="@exercise.ApiID" />
+                    <input asp-for="Name" type="hidden" value="@exercise.Name" />
+                    <input asp-for="BodyPart" type="hidden" value="@exercise.BodyPart" />
+                    <input asp-for="TargetMuscle" type="hidden" value="@exercise.TargetMuscle" />
+                    <input asp-for="Equipment" type="hidden" value="@exercise.Equipment" />
+                    <input asp-for="GifUrl" type="hidden" value="@exercise.GifUrl" />
+
+                    <input type="submit" value="Add to Favorites" />
+                }
             </td>
         </tr>
     }

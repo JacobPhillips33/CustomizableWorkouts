@@ -1,4 +1,4 @@
-﻿@model FavoriteExercises
+﻿@model ExerciseGroup
 
 <h2>Favorite Exercises</h2>
 
@@ -11,7 +11,7 @@
         <th></th>
     </tr>
 
-    @foreach (var exercise in @Model.FavoriteExercisesList)
+    @foreach (var exercise in @Model.ExercisesList)
     {
         @using (Html.BeginForm("RemoveExerciseFromFavorites", "Exercise", "Post"))
         {

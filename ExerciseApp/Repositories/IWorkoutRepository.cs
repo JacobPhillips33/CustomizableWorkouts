@@ -6,6 +6,7 @@ namespace ExerciseApp.Repositories
     public interface IWorkoutRepository
     {
         public IEnumerable<Workout> GetAllWorkouts();
+        public WorkoutGroup GetWorkoutGroup();
         public void InsertWorkout(Workout workout);
         public Workout InstantianteWorkout();
         public void CreateWorkout(Workout workout);
@@ -16,5 +17,7 @@ namespace ExerciseApp.Repositories
         public Workout AssignExercisesToWorkout(Workout workout);
         public void UpdateWorkoutExercise(Workout workout);
         public void RemoveExerciseFromWorkout(Workout workout);
+        public void UpdateWorkout(WorkoutGroup workoutGroup);
+        public void DeleteWorkout(WorkoutGroup workoutGroup);
     }
 }

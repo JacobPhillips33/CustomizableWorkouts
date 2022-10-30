@@ -15,8 +15,8 @@ namespace ExerciseApp.Controllers
 
         public IActionResult Index()
         {
-            var workoutList = _workoutRepository.GetAllWorkouts();
-            return View(workoutList);
+            var workoutGroup = _workoutRepository.GetWorkoutGroup();
+            return View(workoutGroup);
         }
         
         public IActionResult CreateWorkout()
@@ -57,6 +57,20 @@ namespace ExerciseApp.Controllers
             {
                 _workoutRepository.UpdateWorkoutExercise(workout);
                 return RedirectToAction("ViewWorkout", new { id = workout.WorkoutID });
+            }
+        }
+
+        public IActionResult UpdateDeleteWorkout(string cmd, WorkoutGroup workoutGroup)
+        {
+            if (cmd == "Delete")
+            {
+                _workoutRepository.DeleteWorkout(workoutGroup);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                _workoutRepository.UpdateWorkout(workoutGroup);
+                return RedirectToAction("Index");
             }
         }
     }

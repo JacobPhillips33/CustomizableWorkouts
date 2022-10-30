@@ -44,7 +44,11 @@ namespace ExerciseApp.Controllers
                 default: exerciseList = exerciseList.OrderBy(x => x.Name); break;
             }
 
-            return View(exerciseList);
+            var allExercisesGroup = new ExerciseGroup()
+            {
+                ExercisesList = exerciseList
+            };
+            return View(allExercisesGroup);
         }
 
         public IActionResult ViewExercise(int id)
@@ -55,9 +59,9 @@ namespace ExerciseApp.Controllers
         public IActionResult FavoriteExercisesList()
         {
             var favoriteExercisesList = _exerciseRepository.AllFavoriteExercisesList();
-            var favoriteExercises = new FavoriteExercises()
+            var favoriteExercises = new ExerciseGroup()
             {
-                FavoriteExercisesList = favoriteExercisesList
+                ExercisesList = favoriteExercisesList
             };
             return View(favoriteExercises);
         }
@@ -65,10 +69,10 @@ namespace ExerciseApp.Controllers
         public IActionResult AddExerciseToFavoritesList(Exercise exerciseToAdd)
         {
             _exerciseRepository.AddExerciseToFavorites(exerciseToAdd);
-            return RedirectToAction("ViewFavoriteExercisesList");
+            return RedirectToAction("FavoriteExercisesList");
         }
 
-        public IActionResult RemoveExerciseFromFavorites(FavoriteExercises favoriteToRemove)
+        public IActionResult RemoveExerciseFromFavorites(ExerciseGroup favoriteToRemove)
         {
             _exerciseRepository.RemoveExerciseFromFavorites(favoriteToRemove);
             return RedirectToAction("FavoriteExercisesList");

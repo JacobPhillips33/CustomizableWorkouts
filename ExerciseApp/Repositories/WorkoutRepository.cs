@@ -21,6 +21,16 @@ namespace ExerciseApp.Repositories
             return _conn.Query<Workout>("SELECT * FROM workouts;");
         }
 
+        public WorkoutGroup GetWorkoutGroup()
+        {
+            var workoutsList = GetAllWorkouts();
+            var workoutGroup = new WorkoutGroup()
+            {
+                WorkoutsList = workoutsList,
+            };
+            return workoutGroup;
+        }
+
         public void InsertWorkout(Workout workout)
         {
             _conn.Execute("INSERT INTO workouts (WorkoutID, WorkoutName) VALUES (@id, @name);",
@@ -95,6 +105,17 @@ namespace ExerciseApp.Repositories
             var tableName = GetTableName(workout);
 
             _conn.Execute($"DELETE FROM {tableName} WHERE ExerciseID = @id;", new { id = workout.ExerciseID });
+        }
+
+        public void UpdateWorkout(WorkoutGroup workoutGroup)
+        {
+            _conn.Execute("UPDATE workouts SET WorkoutName = @name WHERE WorkoutID = @id;", 
+                new { id = workoutGroup.WorkoutID, name = workoutGroup.WorkoutName });
+        }
+
+        public void DeleteWorkout(WorkoutGroup workoutGroup)
+        {
+            _conn.Execute("DELETE FROM workouts WHERE WorkoutID = @id;", new { id = workoutGroup.WorkoutID });
         }
     }
 }

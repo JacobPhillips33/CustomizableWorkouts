@@ -9,6 +9,6 @@ namespace ExerciseApp.Repositories
         public IEnumerable<Workout> GetWorkoutList();
         public IEnumerable<Exercise> AllFavoriteExercisesList();
         public void AddExerciseToFavorites(Exercise exerciseToAdd);
-        public void RemoveExerciseFromFavorites(FavoriteExercises favoriteToRemove);
+        public void RemoveExerciseFromFavorites(ExerciseGroup favoriteToRemove);
     }
 }
