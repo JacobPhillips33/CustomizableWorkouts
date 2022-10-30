@@ -27,9 +27,9 @@ namespace ExerciseApp.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 exerciseList = exerciseList.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) || 
-                                                  x.BodyPart.ToLower().Contains(searchString.ToLower()) || 
-                                                  x.TargetMuscle.ToLower().Contains(searchString.ToLower()) || 
-                                                  x.Equipment.ToLower().Contains(searchString.ToLower()));
+                                                       x.BodyPart.ToLower().Contains(searchString.ToLower()) || 
+                                                       x.TargetMuscle.ToLower().Contains(searchString.ToLower()) || 
+                                                       x.Equipment.ToLower().Contains(searchString.ToLower()));
             }
 
             switch (sortOrder)
@@ -56,13 +56,26 @@ namespace ExerciseApp.Controllers
             var exercise = _exerciseRepository.SpecificExercise(id);
             return View(exercise);
         }
-        public IActionResult FavoriteExercisesList()
+        public IActionResult FavoriteExercisesList(string searchString)
         {
+            ViewData["CurrentFilter1"] = searchString;
+
             var favoriteExercisesList = _exerciseRepository.AllFavoriteExercisesList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                favoriteExercisesList = favoriteExercisesList.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) ||
+                                                                         x.BodyPart.ToLower().Contains(searchString.ToLower()) ||
+                                                                         x.TargetMuscle.ToLower().Contains(searchString.ToLower()) ||
+                                                                         x.Equipment.ToLower().Contains(searchString.ToLower()));
+            }
+
+
             var favoriteExercises = new ExerciseGroup()
             {
                 ExercisesList = favoriteExercisesList
             };
+
             return View(favoriteExercises);
         }
 

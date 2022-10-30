@@ -2,6 +2,15 @@
 
 <h2>Favorite Exercises</h2>
 
+<form asp-action="FavoriteExercisesList" method="get" align="right">
+    <div class="form-actions no-color">
+        <p>
+            <input type="text" name="SearchString" value="@ViewData["CurrentFilter1"]" />
+            <input type="submit" value="Search" class="btn-primary" />
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <tr>
         <th>Name</th>
