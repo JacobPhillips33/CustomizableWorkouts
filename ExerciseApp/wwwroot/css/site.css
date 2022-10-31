@@ -14,11 +14,13 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    min-height: 75rem;
+    padding-top: 4.5rem;    
 }
 
 #home {
-    background-image: url('../images/2.jpg');
+    background-image: url('../images/background.jpg');
     /*background-size: cover;*/
     min-width: 100%;
     min-height: 100%;
@@ -27,26 +29,54 @@ body {
     display: block;
 }
 
-h1 {
+h1, h2, h3 {
     color: white;
+    text-align: center;
+}
+
+h1 {
     font-size: 5rem;
 }
 
-h3 {
-    color: white;
-}
-
-#table-pages {
-    background-color: black;
-    opacity: .4;
-}
-
-td {
-    color: white;
-    font-size: 1.5rem;
+h2 {
+    font-size: 4rem;
 }
 
 footer a {
     --bs-text-opacity: 1;
     color: #6c757d !important;
 }
+
+th, th a {
+    color: white;
+    font-size: 1.5rem;
+}
+
+tr {
+    text-align: center;
+    vertical-align: middle;    
+}
+
+.stickyTableHeader {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 3.5rem;
+    background-color: #212529;
+}
+
+.stickyTableHeader::after {
+    content:'';
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: white;
+}
+
+td {
+    color: white;
+    font-size: 1rem;
+}
+
+
