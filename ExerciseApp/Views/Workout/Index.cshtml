@@ -22,8 +22,8 @@
                     <input asp-for="@Model.WorkoutName" type="text" name="WorkoutName" class="form-control" value="@workout.WorkoutName" />
                 </td>
                 <td>
-                    <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">View</a> |
-                    <input type="submit" name="cmd" value="Update"> |
+                    <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">View</a> 
+                    <input type="submit" name="cmd" value="Update"> 
                     <input type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Delete">
                 </td>
             </tr>
