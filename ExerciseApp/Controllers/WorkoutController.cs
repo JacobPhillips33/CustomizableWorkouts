@@ -42,8 +42,15 @@ namespace ExerciseApp.Controllers
 
         public IActionResult AddExerciseToWorkout(Exercise exercise)
         {
-            _workoutRepository.AddExerciseToWorkout(exercise);
-            return RedirectToAction("ViewWorkout", new { id = exercise.WorkoutID });
+            if (exercise.WorkoutID == 0)
+            {
+                return RedirectToAction("ViewExercise", "Exercise", new { id = exercise.ExerciseID });
+            }
+            else
+            {
+                _workoutRepository.AddExerciseToWorkout(exercise);
+                return RedirectToAction("ViewWorkout", new { id = exercise.WorkoutID });
+            }            
         }
 
         public IActionResult UpdateRemoveWorkoutExercise(string cmd, Workout workout)
