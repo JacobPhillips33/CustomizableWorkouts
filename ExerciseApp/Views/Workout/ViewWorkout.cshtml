@@ -1,13 +1,13 @@
 ﻿@model Workout
 
-<h2>@Model.WorkoutName</h2>
+<h2>@Model.WorkoutName.ToUpper()</h2>
 
-<table class="table">
+<table class="table bg-dark">
     <tr>
-        <th>Name</th>
-        <th>Reps</th>
-        <th>Sets</th>
-        <th></th>
+        <th>NAME</th>
+        <th>REPS</th>
+        <th>SETS</th>
+        <th><a class="btn btn-outline-light" href="/Exercise/FavoriteExercisesList/">Add From Favorites</a></th>
     </tr>
     
     @foreach (var exercise in @Model.WorkoutExercises)
@@ -30,8 +30,8 @@
                 </td>
                 <td>
                     <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> 
-                    <input type="submit" name="cmd" value="Update">  
-                    <input type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Remove"> 
+                    <input class="btn btn-outline-light" type="submit" name="cmd" value="Update">
+                    <input class="btn btn-outline-light" type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Remove">
                 </td>
             </tr>
         }
