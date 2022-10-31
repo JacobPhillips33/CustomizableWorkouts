@@ -1,15 +1,11 @@
 ﻿@model WorkoutGroup
 
-<h2>All Workouts</h2>
+<h2>ALL WORKOUTS</h2>
 
-<div style="display: block">
-    <a href="/Workout/CreateWorkout/">Create New Workout</a>
-</div>
-
-<table class="table">
-    <tr>
-        <th>Workout</th>
-        <th></th>
+<table class="table bg-dark">
+    <tr class="stickyTableHeader">
+        <th>WORKOUT</th>
+        <th><a class="btn btn-outline-light" href="/Workout/CreateWorkout/">Create New Workout</a></th>
     </tr>
 
     @foreach (var workout in @Model.WorkoutsList)
@@ -22,9 +18,9 @@
                     <input asp-for="@Model.WorkoutName" type="text" name="WorkoutName" class="form-control" value="@workout.WorkoutName" />
                 </td>
                 <td>
-                    <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">View</a> 
-                    <input type="submit" name="cmd" value="Update"> 
-                    <input type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Delete">
+                    <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">View</a>
+                    <input class="btn btn-outline-light" type="submit" name="cmd" value="Update">
+                    <input class="btn btn-outline-light" type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Delete">
                 </td>
             </tr>
         }        
