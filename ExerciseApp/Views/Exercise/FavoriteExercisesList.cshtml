@@ -1,36 +1,36 @@
 ﻿@model ExerciseGroup
 
-<h2>Favorite Exercises</h2>
-
 <form asp-action="FavoriteExercisesList" method="get" align="right">
     <div class="form-actions no-color">
         <p>
             <input type="text" name="SearchString" value="@ViewData["CurrentFilter1"]" />
-            <input type="submit" value="Search" class="btn-primary" />
+            <input type="submit" value="Search" class="btn btn-dark" />
         </p>
     </div>
 </form>
 
-<table class="table">
-    <tr>
+<h2>FAVORITE EXERCISES</h2>
+
+<table class="table bg-dark">
+    <tr class="stickyTableHeader">
         <th>
             <a asp-action="FavoriteExercisesList" asp-route-sortOrder="@ViewData["NameSortParam"]">
-                @Html.DisplayNameFor(model=>model.Name)
+                NAME
             </a>
         </th>
         <th>
             <a asp-action="FavoriteExercisesList" asp-route-sortOrder="@ViewData["BodyPartSortParam"]">
-                @Html.DisplayNameFor(model=>model.BodyPart)
+                BODY PART
             </a>
         </th>
         <th>
             <a asp-action="FavoriteExercisesList" asp-route-sortOrder="@ViewData["TargetMuscleSortParam"]">
-                @Html.DisplayNameFor(model=>model.TargetMuscle)
+                TARGET MUSCLE
             </a>
         </th>
         <th>
             <a asp-action="FavoriteExercisesList" asp-route-sortOrder="@ViewData["EquipmentSortParam"]">
-                @Html.DisplayNameFor(model=>model.Equipment)
+                EQUIPMENT
             </a>
         </th>
         <th></th>
@@ -48,7 +48,7 @@
                 <td>@exercise.Equipment.ToUpper()</td>
                 <td>
                     <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a>
-                    <input type="submit" onclick="return confirm('Are you sure?')" value="Remove">
+                    <input class="btn btn-outline-light" type="submit" onclick="return confirm('Are you sure?')" value="Remove">
                 </td>
             </tr>
         }
