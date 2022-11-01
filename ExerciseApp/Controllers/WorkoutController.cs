@@ -27,9 +27,16 @@ namespace ExerciseApp.Controllers
 
         public IActionResult InsertWorkoutToDatabase(Workout workout)
         {
-            _workoutRepository.InsertWorkout(workout);
-            _workoutRepository.CreateWorkout(workout);
-            return RedirectToAction("Index");
+            if (workout.WorkoutName == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                _workoutRepository.InsertWorkout(workout);
+                _workoutRepository.CreateWorkout(workout);
+                return RedirectToAction("Index");
+            }            
         }
 
         public IActionResult ViewWorkout(int id)
