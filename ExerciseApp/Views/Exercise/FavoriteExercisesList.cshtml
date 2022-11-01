@@ -4,7 +4,7 @@
     <div class="form-actions no-color">
         <p>
             <input type="text" name="SearchString" value="@ViewData["CurrentFilter1"]" />
-            <input type="submit" value="Search" class="btn btn-dark" />
+            <input type="submit" value="Search" class="btn btn-outline-light" />
         </p>
     </div>
 </form>
@@ -47,7 +47,7 @@
                 <td>@exercise.TargetMuscle.ToUpper()</td>
                 <td>@exercise.Equipment.ToUpper()</td>
                 <td>
-                    <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a>
+                    <a class="btn btn-outline-light" href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a>
                     <input class="btn btn-outline-light" type="submit" onclick="return confirm('Are you sure?')" value="Remove">
                 </td>
             </tr>

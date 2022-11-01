@@ -18,7 +18,7 @@ namespace ExerciseApp.Repositories
 
         public IEnumerable<Workout> GetAllWorkouts()
         {
-            return _conn.Query<Workout>("SELECT * FROM workouts;");
+            return _conn.Query<Workout>("SELECT * FROM workouts ORDER BY WorkoutName;");
         }
 
         public WorkoutGroup GetWorkoutGroup()

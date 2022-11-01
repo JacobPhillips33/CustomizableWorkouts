@@ -4,7 +4,7 @@
     <div class="form-actions no-color">
         <p>
             <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-            <input type="submit" value="Search" class="btn btn-dark" />
+            <input type="submit" value="Search" class="btn btn-outline-light" />
         </p>
     </div>
 </form>
@@ -45,7 +45,7 @@
                 <td>@exercise.TargetMuscle.ToUpper()</td>
                 <td>@exercise.Equipment.ToUpper()</td>
                 <td>
-                    <a href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a>
+                    <a class="btn btn-outline-light" href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a>
 
                     @using (Html.BeginForm("AddExerciseToFavoritesList", "Exercise", "Post"))
                     {

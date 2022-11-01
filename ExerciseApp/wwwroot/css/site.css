@@ -85,7 +85,7 @@ td {
 }
 
 a {
-    color: white;
+    color: white;    
 }
 
 .form-control {
@@ -93,4 +93,10 @@ a {
     color: white;
     text-align: center;
     font-size: 1rem;
+}
+
+
+.control-label {
+    color: white;
+    font-size: 1.5rem;
 }

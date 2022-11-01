@@ -5,7 +5,7 @@
 <table class="table bg-dark">
     <tr class="stickyTableHeader">
         <th>WORKOUT NAME</th>
-        <th><a class="btn btn-outline-light" href="/Workout/CreateWorkout/">Create New Workout</a></th>
+        <th></th>
     </tr>
 
     @foreach (var workout in @Model.WorkoutsList)
@@ -18,11 +18,28 @@
                     <input asp-for="@Model.WorkoutName" type="text" name="WorkoutName" class="form-control" value="@workout.WorkoutName" />
                 </td>
                 <td>
-                    <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID">View</a>
+                    <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID" class="btn btn-outline-light">View</a>
                     <input class="btn btn-outline-light" type="submit" name="cmd" value="Update">
                     <input class="btn btn-outline-light" type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Delete">
                 </td>
             </tr>
         }        
     }
+    @using (Html.BeginForm("InsertWorkoutToDatabase", "Workout", "Post"))
+    {
+        <tr>
+            <input asp-for="WorkoutID" type="hidden" value="" />
+            <td>
+                <input type="text" name="WorkoutName" class="form-control" placeholder="Type New Workout Name Here" value="" />
+            </td>
+            <td>
+                <input type="submit" value="Create New Workout" class="btn btn-outline-light" />
+            </td>
+        </tr>
+    }    
 </table>
+
+
+
+
+
