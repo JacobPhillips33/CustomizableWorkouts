@@ -20,8 +20,10 @@
                 <input asp-for="@Model.WorkoutName" type="hidden" value="@Model.WorkoutName" />
                 <input asp-for="@Model.ExerciseID" type="hidden" value="@exercise.ExerciseID" />
                 <td>
+                    <a href=/Exercise/ViewExercise/@exercise.ExerciseID>
                     <input asp-for="@exercise.Name" type="hidden" value="@exercise.Name" />
                     @exercise.Name.ToUpper()
+                    </a>
                 </td>
                 <td>
                     <input asp-for="@Model.Reps" type="text" name="Reps" class="form-control" value="@exercise.Reps" />
@@ -33,7 +35,6 @@
                     <input asp-for="@Model.Weight" type="text" name="Weight" class="form-control" value="@exercise.Weight" />
                 </td>
                 <td>
-                    <a class="btn btn-outline-light" href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> 
                     <input class="btn btn-outline-light" type="submit" name="cmd" value="Update">
                     <input class="btn btn-outline-light" type="submit" name="cmd" onclick="return confirm('Are you sure? This cannot be undone.')" value="Remove">
                 </td>

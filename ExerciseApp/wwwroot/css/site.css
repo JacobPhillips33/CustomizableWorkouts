@@ -85,7 +85,8 @@ td {
 }
 
 a {
-    color: white;    
+    color: white;   
+    text-decoration: none;
 }
 
 .form-control {
