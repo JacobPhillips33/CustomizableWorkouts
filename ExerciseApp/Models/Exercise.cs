@@ -16,5 +16,6 @@
         public int WorkoutID { get; set; }
         public string? Reps { get; set; }
         public string? Sets { get; set; }
+        public string? Weight { get; set; }
     }
 }

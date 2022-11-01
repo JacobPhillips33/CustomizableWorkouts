@@ -7,6 +7,7 @@
         <th>NAME</th>
         <th>REPS</th>
         <th>SETS</th>
+        <th>WEIGHT</th>
         <th><a class="btn btn-outline-light" href="/Exercise/FavoriteExercisesList/">View Favorite Exercises</a></th>
     </tr>
     
@@ -27,6 +28,9 @@
                 </td>
                 <td>
                     <input asp-for="@Model.Sets" type="text" name="Sets" class="form-control" value="@exercise.Sets" />
+                </td>
+                <td>
+                    <input asp-for="@Model.Weight" type="text" name="Weight" class="form-control" value="@exercise.Weight" />
                 </td>
                 <td>
                     <a class="btn btn-outline-light" href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> 

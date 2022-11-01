@@ -48,7 +48,7 @@ namespace ExerciseApp.Repositories
             var tableName = GetTableName(workout);
 
             MySqlCommand createWorkoutTable = new MySqlCommand($"CREATE TABLE {tableName} (ExerciseID int, " +
-                $"Name varchar(100), Reps varchar(45), Sets varchar(45));", _mySqlConn);
+                $"Name varchar(100), Reps varchar(45), Sets varchar(45), Weight varchar(45));", _mySqlConn);
 
             createWorkoutTable.ExecuteNonQuery();
         }
@@ -104,8 +104,8 @@ namespace ExerciseApp.Repositories
         {
             var tableName = GetTableName(workout);
 
-            _conn.Execute($"UPDATE {tableName} SET Reps = @reps, Sets = @sets WHERE ExerciseID = @id;",
-                new { reps = workout.Reps, sets = workout.Sets, id = workout.ExerciseID });
+            _conn.Execute($"UPDATE {tableName} SET Reps = @reps, Sets = @sets, Weight = @weight WHERE ExerciseID = @id;",
+                new { reps = workout.Reps, sets = workout.Sets, weight = workout.Weight, id = workout.ExerciseID });
         }
 
         public void RemoveExerciseFromWorkout(Workout workout)
