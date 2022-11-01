@@ -130,6 +130,10 @@ namespace ExerciseApp.Repositories
 
         public void DeleteWorkout(WorkoutGroup workoutGroup)
         {
+            var tableName = GetTableName(workoutGroup);
+
+            _conn.Execute($"DROP TABLE {tableName};");
+
             _conn.Execute("DELETE FROM workouts WHERE WorkoutID = @id;", new { id = workoutGroup.WorkoutID });
         }
     }

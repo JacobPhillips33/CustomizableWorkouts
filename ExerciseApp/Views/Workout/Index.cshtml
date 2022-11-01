@@ -20,7 +20,7 @@
                 <td>
                     <a asp-controller="Workout" asp-action="ViewWorkout" asp-route-id="@workout.WorkoutID" class="btn btn-outline-light">View</a>
                     <input class="btn btn-outline-light" type="submit" name="cmd" value="Update">
-                    <input class="btn btn-outline-light" type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Delete">
+                    <input class="btn btn-outline-light" type="submit" name="cmd" onclick="return confirm('Are you sure? This cannot be undone.')" value="Delete">
                 </td>
             </tr>
         }        
