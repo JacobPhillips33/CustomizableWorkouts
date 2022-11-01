@@ -3,7 +3,7 @@
 <h2>@Model.WorkoutName.ToUpper()</h2>
 
 <table class="table bg-dark">
-    <tr>
+    <tr class="stickyTableHeader">
         <th>NAME</th>
         <th>REPS</th>
         <th>SETS</th>
@@ -31,7 +31,7 @@
                 <td>
                     <a class="btn btn-outline-light" href=/Exercise/ViewExercise/@exercise.ExerciseID>View</a> 
                     <input class="btn btn-outline-light" type="submit" name="cmd" value="Update">
-                    <input class="btn btn-outline-light" type="submit" name="cmd" onclick="return confirm('Are you sure?')" value="Remove">
+                    <input class="btn btn-outline-light" type="submit" name="cmd" onclick="return confirm('Are you sure? This cannot be undone.')" value="Remove">
                 </td>
             </tr>
         }
