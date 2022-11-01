@@ -8,7 +8,10 @@
         <th>REPS</th>
         <th>SETS</th>
         <th>WEIGHT</th>
-        <th><a class="btn btn-outline-light" href="/Exercise/FavoriteExercisesList/">View Favorite Exercises</a></th>
+        <th>
+            <a class="btn btn-outline-light" href="/Exercise/Index/">View All Exercises</a>
+            <a class="btn btn-outline-light" href="/Exercise/FavoriteExercisesList/">View Favorite Exercises</a>
+        </th>
     </tr>
     
     @foreach (var exercise in @Model.WorkoutExercises)
